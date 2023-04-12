@@ -19,10 +19,10 @@ const Footer = () => {
               >
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
               </svg>
-              <span class="ml-3 text-xl">Tailblocks</span>
+              <span class="ml-3 text-xl">Metawear</span>
             </a>
             <p class="mt-2 text-sm text-gray-500">
-              Air plant banjo lyft occupy retro adaptogen indego
+              Try Outfits Acording to your fit
             </p>
           </div>
           <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
