@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
 
+import Drawer from "./Drawer";
+import Card from "./Card";
+
 const Navbar = () => {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
       <header class="text-gray-600 body-font">
@@ -58,10 +62,19 @@ const Navbar = () => {
             Sign up
           </button>
           <span className="mx-2">
-            <HiShoppingCart style={{ fontSize: "31px" }} />
+            <HiShoppingCart
+              onClick={() => setIsOpen(true)}
+              style={{ fontSize: "31px", cursor: "pointer" }}
+            />
           </span>
         </div>
       </header>
+      <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </Drawer>
     </>
   );
 };
