@@ -52,25 +52,60 @@ const Navbar = () => {
               <Link to="/contactus"> Contact Us </Link>
             </a>
           </nav>
-          <button
-            class="inline-flex items-center bg-gray-100 mx-3 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
-            onClick={() => navigate("/login")}
-          >
-            Login
-          </button>
-          <button
-            class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
-            onClick={() => navigate("/signup")}
-          >
-            Sign up
-          </button>
+          {localStorage.getItem("metaWear") === "loggedIn" ? (
+            <>
+              <button
+                class="inline-flex items-center bg-gray-100 mx-3 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                // onClick={() => navigate("/")}
+                onClick={() => {
+                  localStorage.removeItem("metaWear");
+                }}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                class="inline-flex items-center bg-gray-100 mx-3 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </button>
 
+              <button
+                class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                onClick={() => navigate("/signup")}
+              >
+                Sign up
+              </button>
+            </>
+          )}
+
+          <div class="relative w-10 h-10 mx-4 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+            <svg
+              class="absolute w-12 h-12 text-gray-400 -left-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{
+                cursor: "pointer",
+              }}
+              onClick={() => navigate("/profile")}
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
           <span className="mx-2">
             <HiShoppingCart
               onClick={() => setIsOpen(true)}
               style={{ fontSize: "31px", cursor: "pointer" }}
             />
-            <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-2.5 right-4 dark:border-gray-900">
+            <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-2.5 right-3 dark:border-gray-900">
               {cartItems.length}
             </div>
           </span>

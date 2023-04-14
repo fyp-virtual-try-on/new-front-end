@@ -1,16 +1,19 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <>
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
           <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
             <h1 class="title-font font-medium text-3xl text-gray-900">
-            With our virtual try-on feature, you can try on clothes without ever leaving your house. Log in now to try it out!
+              With our virtual try-on feature, you can try on clothes without
+              ever leaving your house. Log in now to try it out!
             </h1>
             <p class="leading-relaxed mt-4">
-            Want to try on clothes virtually before you buy them? Our virtual try-on feature has got you covered. Sign in now to get started!
+              Want to try on clothes virtually before you buy them? Our virtual
+              try-on feature has got you covered. Sign in now to get started!
             </p>
           </div>
           <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
@@ -44,7 +47,13 @@ const Login = () => {
               </p>
             </div>
 
-            <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+            <button
+              class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              onClick={() => {
+                localStorage.setItem("metaWear", "loggedIn");
+                navigate("/");
+              }}
+            >
               Login
             </button>
           </div>
