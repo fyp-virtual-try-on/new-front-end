@@ -1,10 +1,27 @@
 import React, { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
+import useDrivePicker from "react-google-drive-picker";
+import Webcam from "react-webcam";
 const fileTypes = ["JPG", "PNG", "GIF"];
 
+const videoConstraints = {
+  width: 400,
+  height: 400,
+  facingMode: "user",
+};
 const ProductDetailsPage = () => {
   const [file, setFile] = useState(null);
+  const [openPicker, data, authResponse] = useDrivePicker();
+  const [driveObj, setDriveObj] = useState("");
   const [uploadImageURL, setUploadImageURL] = useState("");
+  const [isCamera, setIsCamera] = useState(false);
+
+  const [picture, setPicture] = useState("");
+  const webcamRef = React.useRef(null);
+  const capture = React.useCallback(() => {
+    const pictureSrc = webcamRef.current.getScreenshot();
+    setPicture(pictureSrc);
+  });
   const handleChange = (file) => {
     setFile(file);
     const reader = new FileReader();
@@ -13,11 +30,34 @@ const ProductDetailsPage = () => {
       setUploadImageURL(reader.result);
     };
   };
+  const handleOpenPicker = () => {
+    openPicker({
+      clientId:
+        "843861638932-3a853gfcdmvdk4k2n7i7g8tbe5fq3qgl.apps.googleusercontent.com",
+      developerKey: "AIzaSyC7PwiaGP7I7hsJ48XfiPNV0n9pBiabPJ0",
+      viewId: "DOCS_IMAGES",
+      // token: token, // pass oauth token in case you already have one
+      showUploadView: true,
+      showUploadFolders: true,
+      supportDrives: true,
+      multiselect: false,
+      // customViews: customViewsArray, // custom view
+      callbackFunction: (data) => {
+        if (data.action === "cancel") {
+          console.log("User clicked cancel/close button");
+        }
+        console.log(data);
+        // console.log("imag id=> ", );
+        setDriveObj(data.docs[0]?.id);
+      },
+    });
+  };
+
   return (
     <>
       <div className="flex container justify-around mx-auto w-4/5">
         <div className="upload-img">
-          {!uploadImageURL && !file ? (
+          {!uploadImageURL && !file && !isCamera && !picture ? (
             <div className="flex justify-center p-16 mb-20 flex-col items-center">
               <FileUploader
                 handleChange={handleChange}
@@ -28,10 +68,16 @@ const ProductDetailsPage = () => {
                 <>
                   <p className="my-4">OR Upload Image from</p>
                   <div>
-                    <button class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                    <button
+                      class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                      onClick={() => setIsCamera(true)}
+                    >
                       Camera App
                     </button>
-                    <button class="lg:mt-2 mx-4 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                    <button
+                      class="lg:mt-2 mx-4 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                      onClick={() => handleOpenPicker()}
+                    >
                       Google Drive
                     </button>
                   </div>
@@ -66,6 +112,90 @@ const ProductDetailsPage = () => {
                 </button>
                 <button class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                   Execute
+                </button>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+          {picture && !uploadImageURL ? (
+            <div className="flex justify-center mb-8 h-full flex-col items-center ">
+              <img
+                src={picture}
+                alt=""
+                // height={200}
+                style={{
+                  height: "296px",
+                  objectFit: "contain",
+                  width: "500px",
+                }}
+                // width={500}
+                srcset=""
+              />
+              <p>
+                {file ? `File name: ${file?.name}` : "no files uploaded yet"}
+              </p>
+              <div className="flex mt-4 justify-between w-full">
+                <button
+                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsCamera(false);
+                    setPicture("");
+                  }}
+                >
+                  Cancel
+                </button>
+                <button
+                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPicture();
+                  }}
+                >
+                  Retake
+                </button>
+                <button class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                  Execute
+                </button>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+          {!picture && isCamera ? (
+            <div className="flex justify-center mb-8 h-full flex-col items-center ">
+              <Webcam
+                audio={false}
+                height={"100%"}
+                ref={webcamRef}
+                width={"100%"}
+                screenshotFormat="image/jpeg"
+                videoConstraints={videoConstraints}
+              />
+              <p>
+                {file ? `File name: ${file?.name}` : "no files uploaded yet"}
+              </p>
+              <div className="flex mt-4 justify-between w-full">
+                <button
+                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    capture();
+                  }}
+                >
+                  Capture
+                </button>
+
+                <button
+                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPicture("");
+                    setIsCamera(false);
+                  }}
+                >
+                  Cancel
                 </button>
               </div>
             </div>

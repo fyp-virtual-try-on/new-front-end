@@ -1,22 +1,54 @@
 import React from "react";
-import heroImg from "../images/hero-img.png";
+import { IoMdAddCircleOutline } from "react-icons/io";
+import { IoMdRemoveCircleOutline } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import {
+  removeItem,
+  addItemQuantity,
+  removeItemQuantity,
+} from "../store/cartItem/cartItemSlice";
 
-export default function Card() {
+export default function Card({
+  productName,
+  productPrice,
+  productQty,
+  item,
+  productImg,
+}) {
+  const dispatch = useDispatch();
   return (
     <div className="border border-gray-300 flex shadow rounded-md p-4 max-w-sm w-full mx-auto">
       <img
-        class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-        src={heroImg}
+        class="object-cover w-full rounded-t-lg h-20  md:w-48 md:rounded-none md:rounded-l-lg"
+        src={productImg}
         alt=""
       />
       <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2md font-bold tracking-tight text-gray-900 dark:text-white">
-          Noteworthy technology acquisitions 2021
+        <h5 class="mb-2 text-2sm font-bold tracking-tight text-gray-900 dark:text-white">
+          {productName}
         </h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
+        <p class=" font-bold flex items-center text-gray-700 dark:text-gray-400">
+          Qty: &nbsp;{" "}
+          <IoMdRemoveCircleOutline
+            className="cursor-pointer"
+            onClick={() => dispatch(removeItemQuantity(item))}
+          />{" "}
+          &nbsp; {productQty} &nbsp;{" "}
+          <IoMdAddCircleOutline
+            className="cursor-pointer"
+            onClick={() => dispatch(addItemQuantity(item))}
+          />
         </p>
+
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Price : {productPrice}$
+        </p>
+        <button
+          class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+          onClick={() => dispatch(removeItem(item))}
+        >
+          Remove
+        </button>
       </div>
     </div>
   );

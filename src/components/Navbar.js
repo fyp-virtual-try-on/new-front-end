@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
+import { useSelector } from "react-redux";
 
 import Drawer from "./Drawer";
 import Card from "./Card";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = React.useState(false);
+  const cartItems = useSelector((state) => state.cartItems);
+
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <header class="text-gray-600 body-font">
@@ -61,19 +64,30 @@ const Navbar = () => {
           >
             Sign up
           </button>
+
           <span className="mx-2">
             <HiShoppingCart
               onClick={() => setIsOpen(true)}
               style={{ fontSize: "31px", cursor: "pointer" }}
             />
+            <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-2.5 right-4 dark:border-gray-900">
+              {cartItems.length}
+            </div>
           </span>
         </div>
       </header>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {cartItems.map((item) => {
+          return (
+            <Card
+              productName={item.name}
+              productPrice={item.price}
+              productImg={item.image}
+              productQty={item.quantity}
+              item={item}
+            />
+          );
+        })}
       </Drawer>
     </>
   );
