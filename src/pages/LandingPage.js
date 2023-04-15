@@ -11,7 +11,7 @@ const LandingPage = () => {
   return (
     <>
       <section class="text-gray-600 body-font ">
-        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div class="container mx-auto w-4/5 flex px-5 py-24 md:flex-row flex-col items-center">
           <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
               Your Fit
@@ -47,7 +47,7 @@ const LandingPage = () => {
       </section>
       {/* cta section */}
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto flex items-center md:flex-row flex-col">
+        <div class="container px-5 py-24 w-4/5 mx-auto flex items-center md:flex-row flex-col">
           <div class="flex flex-col md:pr-10 md:mb-0 mb-6 pr-0 w-full md:w-auto md:text-left text-center">
             <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">
               Metawerse
@@ -94,7 +94,7 @@ const LandingPage = () => {
 
       {/* feature section   */}
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 w-4/5 py-24 mx-auto">
           <h1 class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 mb-20">
             MetaWarse
             <br class="hidden sm:block" />
@@ -235,7 +235,7 @@ const LandingPage = () => {
       {/* content  */}
 
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 w-4/5 py-24 mx-auto">
           <div class="flex flex-wrap w-full mb-20">
             <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
               <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
@@ -332,7 +332,7 @@ const LandingPage = () => {
       </section>
       {/* stat  */}
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 py-24 w-4/5 mx-auto">
           <div class="flex flex-col text-center w-full mb-20">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
               Metawerse Works for All the Brands & Clients
@@ -446,7 +446,7 @@ const LandingPage = () => {
       </section>
 
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 w-4/5 py-24 mx-auto">
           <h1 class="text-3xl font-medium title-font text-gray-900 mb-12 text-center">
             Reviews by Clients
           </h1>

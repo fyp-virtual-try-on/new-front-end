@@ -19,7 +19,7 @@ export default function Card({
   return (
     <div className="border border-gray-300 flex shadow rounded-md p-4 max-w-sm w-full mx-auto">
       <img
-        class="object-cover w-full rounded-t-lg h-20  md:w-48 md:rounded-none md:rounded-l-lg"
+        class="object-cover w-full rounded-t-lg h-40  md:w-48 md:rounded-none md:rounded-l-lg"
         src={productImg}
         alt=""
       />
