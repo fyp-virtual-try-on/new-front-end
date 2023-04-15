@@ -264,9 +264,7 @@ const LandingPage = () => {
                   src={img1}
                   alt="content"
                 />
-                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                  SUBTITLE
-                </h3>
+                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
                   Great Pyramid of Giza
                 </h2>
@@ -334,9 +332,7 @@ const LandingPage = () => {
                   src={img2}
                   alt="content"
                 />
-                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                  SUBTITLE
-                </h3>
+                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
                   Great Pyramid of Giza
                 </h2>
@@ -404,9 +400,7 @@ const LandingPage = () => {
                   src={img3}
                   alt="content"
                 />
-                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                  SUBTITLE
-                </h3>
+                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
                   Great Pyramid of Giza
                 </h2>
@@ -474,9 +468,7 @@ const LandingPage = () => {
                   src={img1}
                   alt="content"
                 />
-                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                  SUBTITLE
-                </h3>
+                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
                   Great Pyramid of Giza
                 </h2>
