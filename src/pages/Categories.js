@@ -1,6 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import img from "./../images/hero-img.png";
+import img1 from "./../images/1.jpg";
+import img2 from "./../images/2.jpg";
+import img3 from "./../images/3.jpg";
+import img4 from "./../images/4.jpg";
+import img5 from "./../images/5.jpg";
+import img6 from "./../images/6.jpg";
+
 import { useDispatch } from "react-redux";
 import { cartItem } from "../store/cartItem/cartItemSlice";
 
@@ -11,7 +18,7 @@ const Categories = () => {
     {
       id: 1,
       name: "T-Shirt",
-      image: img,
+      image: img1,
       quantity: 1,
       price: 100,
       totalPrice: 100,
@@ -19,7 +26,7 @@ const Categories = () => {
     {
       id: 2,
       name: "Shirt",
-      image: img,
+      image: img2,
       quantity: 1,
       price: 200,
       totalPrice: 200,
@@ -27,7 +34,7 @@ const Categories = () => {
     {
       id: 3,
       name: "Pant",
-      image: img,
+      image: img3,
       quantity: 1,
       price: 300,
       totalPrice: 300,
@@ -35,7 +42,23 @@ const Categories = () => {
     {
       id: 4,
       name: "Shoes",
-      image: img,
+      image: img4,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 5,
+      name: "Shoes",
+      image: img5,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 6,
+      name: "Shoes",
+      image: img6,
       quantity: 1,
       price: 400,
       totalPrice: 400,
@@ -232,7 +255,7 @@ const Categories = () => {
                     return (
                       <>
                         <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
-                          <a class="block relative h-48 rounded overflow-hidden">
+                          <a class="block relative h-auto rounded overflow-hidden">
                             <img
                               alt="ecommerce"
                               class="object-cover object-center w-full h-full block"

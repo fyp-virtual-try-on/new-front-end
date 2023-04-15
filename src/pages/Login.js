@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
+  const [isShowPassword, setIsShowPassword] = useState(false);
   return (
     <>
       <section class="text-gray-600 body-font">
@@ -36,11 +37,28 @@ const Login = () => {
                 Password
               </label>
               <input
-                type="password"
+                type={`${isShowPassword ? "text" : "password"}`}
                 id="full-name"
                 name="full-name"
                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
+              <div class="flex items-center mt-4 mb-4">
+                <input
+                  id="default-checkbox"
+                  type="checkbox"
+                  onChange={(e) => {
+                    setIsShowPassword(e.target.checked);
+                  }}
+                  value=""
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  for="default-checkbox"
+                  class="ml-2   text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  Show/Hide Password
+                </label>
+              </div>
               <p class="text-xs text-gray-500 mt-3 ">
                 {" "}
                 <a onClick={() => navigate("/forgetPassword")}>
