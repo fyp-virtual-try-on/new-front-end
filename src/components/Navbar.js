@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import logo from "../images/logo.png";
 
 import Drawer from "./Drawer";
 import Card from "./Card";
@@ -82,6 +85,12 @@ const Navbar = () => {
               </button>
             </>
           )}
+          <span className="mx-2">
+            <AiOutlineHome
+              style={{ fontSize: "31px", cursor: "pointer" }}
+              onClick={() => navigate("/")}
+            />
+          </span>
 
           {localStorage.getItem("metaWear") === "loggedIn" ? (
             <>
@@ -103,6 +112,14 @@ const Navbar = () => {
                   ></path>
                 </svg>
               </div>
+
+              <span className="mx-2">
+                <MdOutlineFavoriteBorder
+                  style={{ fontSize: "31px", cursor: "pointer" }}
+                  onClick={() => navigate("/favorite")}
+                />
+              </span>
+
               <span className="mx-2">
                 <HiShoppingCart
                   onClick={() => setIsOpen(true)}

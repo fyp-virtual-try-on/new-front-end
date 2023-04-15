@@ -10,8 +10,11 @@ import Dresses from "./pages/Dresses";
 import ContactUs from "./pages/ContactUs";
 import Checkout from "./pages/Checkout";
 import About from "./pages/About";
+import FavoriteList from "./pages/FavoriteList";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import NewPassword from "./pages/NewPassword";
 import Profile from "./pages/Profile";
+import ForgetPassword from "./pages/ForgetPassword";
 function App() {
   return (
     <>
@@ -25,7 +28,10 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/forgetPassword" element={<ForgetPassword />} />
+        <Route path="/newPassword" element={<NewPassword />} />
         <Route path="/dresses" element={<Dresses />} />
+        <Route path="/favorite" element={<FavoriteList />} />
         <Route path="/productDetailsPage" element={<ProductDetailsPage />} />
 
         <Route path="/contactus" element={<ContactUs />} />
