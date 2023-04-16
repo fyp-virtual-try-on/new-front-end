@@ -34,7 +34,7 @@ const LandingPage = () => {
               can start your virtual try-on journey today!
             </p>
             <div class="flex justify-center">
-              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button class="inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6  hover:text-black focus:outline-none hover:bg-white rounded text-lg">
                 Lets Start
               </button>
               {/* <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
@@ -55,7 +55,7 @@ const LandingPage = () => {
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 w-4/5 mx-auto flex items-center md:flex-row flex-col">
           <div class="flex flex-col md:pr-10 md:mb-0 mb-6 pr-0 w-full md:w-auto md:text-left text-center">
-            <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">
+            <h2 class="text-xs text-darkSlateBlue tracking-widest font-medium title-font mb-1">
               Metawerse
             </h2>
             <h1 class="md:text-3xl text-2xl font-medium title-font text-gray-900">
@@ -108,7 +108,7 @@ const LandingPage = () => {
           </h1>
           <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
             <div class="p-4 md:w-1/3 flex">
-              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0">
+              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-darkSlateBlue mb-4 flex-shrink-0">
                 <svg
                   fill="none"
                   stroke="currentColor"
@@ -132,7 +132,7 @@ const LandingPage = () => {
                   we've created an innovative platform that lets you try on
                   clothes virtually.
                 </p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">
+                <a class="mt-3 text-darkSlateBlue inline-flex items-center">
                   Learn More
                   <svg
                     fill="none"
@@ -149,7 +149,7 @@ const LandingPage = () => {
               </div>
             </div>
             <div class="p-4 md:w-1/3 flex">
-              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0">
+              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-darkSlateBlue mb-4 flex-shrink-0">
                 <svg
                   fill="none"
                   stroke="currentColor"
@@ -177,7 +177,7 @@ const LandingPage = () => {
                   whenever you want, without having to wait for a physical store
                   to open.
                 </p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">
+                <a class="mt-3 text-darkSlateBlue inline-flex items-center">
                   Learn More
                   <svg
                     fill="none"
@@ -194,7 +194,7 @@ const LandingPage = () => {
               </div>
             </div>
             <div class="p-4 md:w-1/3 flex">
-              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0">
+              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-darkSlateBlue mb-4 flex-shrink-0">
                 <svg
                   fill="none"
                   stroke="currentColor"
@@ -218,7 +218,7 @@ const LandingPage = () => {
                   With just a few clicks, you can upload a photo of yourself and
                   try on different outfits .
                 </p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">
+                <a class="mt-3 text-darkSlateBlue inline-flex items-center">
                   Learn More
                   <svg
                     fill="none"
@@ -247,7 +247,7 @@ const LandingPage = () => {
               <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
                 Recommendations
               </h1>
-              <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+              <div class="h-1 w-20 bg-darkSlateBlue rounded"></div>
             </div>
             <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
               Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
@@ -264,7 +264,7 @@ const LandingPage = () => {
                   src={img1}
                   alt="content"
                 />
-                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
+                <h3 class="tracking-widest text-darkSlateBlue text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
                   Great Pyramid of Giza
                 </h2>
@@ -332,7 +332,7 @@ const LandingPage = () => {
                   src={img2}
                   alt="content"
                 />
-                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
+                <h3 class="tracking-widest text-darkSlateBlue text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
                   Great Pyramid of Giza
                 </h2>
@@ -400,7 +400,7 @@ const LandingPage = () => {
                   src={img3}
                   alt="content"
                 />
-                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
+                <h3 class="tracking-widest text-darkSlateBlue text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
                   Great Pyramid of Giza
                 </h2>
@@ -468,7 +468,7 @@ const LandingPage = () => {
                   src={img1}
                   alt="content"
                 />
-                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
+                <h3 class="tracking-widest text-darkSlateBlue text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
                   Great Pyramid of Giza
                 </h2>
@@ -561,7 +561,7 @@ const LandingPage = () => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  class="text-indigo-500 w-12 h-12 mb-3 inline-block"
+                  class="text-darkSlateBlue w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <path d="M8 17l4 4 4-4m-4-5v9"></path>
@@ -582,7 +582,7 @@ const LandingPage = () => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  class="text-indigo-500 w-12 h-12 mb-3 inline-block"
+                  class="text-darkSlateBlue w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
@@ -608,7 +608,7 @@ const LandingPage = () => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  class="text-indigo-500 w-12 h-12 mb-3 inline-block"
+                  class="text-darkSlateBlue w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <path d="M3 18v-6a9 9 0 0118 0v6"></path>
@@ -632,7 +632,7 @@ const LandingPage = () => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  class="text-indigo-500 w-12 h-12 mb-3 inline-block"
+                  class="text-darkSlateBlue w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>

@@ -30,7 +30,7 @@ const Login = () => {
                 type="email"
                 id="email"
                 name="email"
-                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
             <div class="relative mb-4">
@@ -41,7 +41,7 @@ const Login = () => {
                 type={`${isShowPassword ? "text" : "password"}`}
                 id="full-name"
                 name="full-name"
-                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               <div class="flex items-center mt-4 mb-4">
                 <input
@@ -69,7 +69,7 @@ const Login = () => {
             </div>
 
             <button
-              class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              class="text-white bg-darkSlateBlue border-2 py-2 px-8 focus:outline-none hover:bg-white hover:text-black rounded text-lg"
               onClick={() => {
                 localStorage.setItem("metaWear", "loggedIn");
                 navigate("/");

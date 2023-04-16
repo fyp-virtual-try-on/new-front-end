@@ -42,7 +42,7 @@ export default function Drawer({ children, isOpen, setIsOpen }) {
           </header>
           <div className="flex px-4 justify-between">
             <button
-              class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+              class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black  rounded"
               onClick={() => {
                 setIsOpen(false);
                 navigate("/checkout");
@@ -51,7 +51,7 @@ export default function Drawer({ children, isOpen, setIsOpen }) {
               Checkout
             </button>
             <button
-              class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+              class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"
               onClick={() => dispatch(removeAllItems())}
             >
               Clear

@@ -10,7 +10,8 @@ const ContactUs = () => {
               Contact Us
             </h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Contact us if you experience any issues with our virtual try-on service. Our team is here to assist you.
+              Contact us if you experience any issues with our virtual try-on
+              service. Our team is here to assist you.
             </p>
           </div>
           <div class="lg:w-1/2 md:w-2/3 mx-auto">
@@ -24,7 +25,7 @@ const ContactUs = () => {
                     type="text"
                     id="name"
                     name="name"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
@@ -37,7 +38,7 @@ const ContactUs = () => {
                     type="email"
                     id="email"
                     name="email"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
@@ -49,17 +50,17 @@ const ContactUs = () => {
                   <textarea
                     id="message"
                     name="message"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                   ></textarea>
                 </div>
               </div>
               <div class="p-2 w-full">
-                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                <button class="flex mx-auto text-white bg-darkSlateBlue border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                   Send
                 </button>
               </div>
               <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                <a class="text-indigo-500">example@email.com</a>
+                <a class="text-darkSlateBlue">example@email.com</a>
                 <p class="leading-normal my-5">
                   49 Smith St.
                   <br />
