@@ -6,7 +6,7 @@ import {
   removeItem,
   addItemQuantity,
   removeItemQuantity,
-} from "../store/cartItem/cartItemSlice";
+} from "../store/cartItem/favItemSlice";
 
 export default function FavListItem({
   productName,

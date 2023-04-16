@@ -10,6 +10,7 @@ import img6 from "./../images/6.jpg";
 
 import { useDispatch } from "react-redux";
 import { cartItem } from "../store/cartItem/cartItemSlice";
+import { favItem } from "../store/cartItem/favItemSlice";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -266,8 +267,23 @@ const Categories = () => {
                             <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
                               CATEGORY
                             </h3>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">
-                              {item.name}
+                            <h2 class="text-gray-900 flex justify-between title-font text-lg font-medium">
+                              <span>{item.name}</span>{" "}
+                              <button
+                                class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                                onClick={() => dispatch(favItem(item))}
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  class="w-5 h-5"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                </svg>
+                              </button>
                             </h2>
                             <p class="mt-1 mb-5">${item.price}.00</p>
                             <div className="flex justify-between">

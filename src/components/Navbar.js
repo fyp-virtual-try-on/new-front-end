@@ -5,7 +5,7 @@ import { HiShoppingCart } from "react-icons/hi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import logo from "../images/logo.png";
+import logo from "../images/logoNew.png";
 
 import Drawer from "./Drawer";
 import Card from "./Card";
@@ -46,10 +46,7 @@ const Navbar = () => {
               {" "}
               <Link to="/about"> About Us </Link>
             </a>
-            <a class="mr-5 hover:text-gray-900">
-              {" "}
-              <Link to="/dresses"> Dresses </Link>
-            </a>
+
             <a class="mr-5 hover:text-gray-900">
               {" "}
               <Link to="/contactus"> Contact Us </Link>

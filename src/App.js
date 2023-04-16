@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import { Route, Routes } from "react-router-dom";
 import Categories from "./pages/Categories";
 import Dresses from "./pages/Dresses";
+import ChangePassword from "./pages/ChangePassword";
 import ContactUs from "./pages/ContactUs";
 import Checkout from "./pages/Checkout";
 import About from "./pages/About";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/forgetPassword" element={<ForgetPassword />} />
         <Route path="/newPassword" element={<NewPassword />} />
+        <Route path="/changePassword" element={<ChangePassword />} />
         <Route path="/dresses" element={<Dresses />} />
         <Route path="/favorite" element={<FavoriteList />} />
         <Route path="/productDetailsPage" element={<ProductDetailsPage />} />

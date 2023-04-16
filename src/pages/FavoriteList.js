@@ -1,8 +1,11 @@
 import React from "react";
 import img from "./../images/hero-img.png";
 import FavListItem from "../components/FavListItem";
+import { useSelector } from "react-redux";
 
 const FavoriteList = () => {
+  const favItems = useSelector((state) => state.favItems);
+
   const items = [
     {
       id: 1,
@@ -40,10 +43,11 @@ const FavoriteList = () => {
 
   return (
     <>
+      {console.log("fav Items => ", favItems)}
       <h1 class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 my-20">
         Favorites
       </h1>
-      {items.map((item) => {
+      {favItems.map((item) => {
         return (
           <FavListItem
             productName={item.name}

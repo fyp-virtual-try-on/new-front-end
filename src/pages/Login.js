@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
 const Login = () => {
   const navigate = useNavigate();
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -76,6 +77,19 @@ const Login = () => {
             >
               Login
             </button>
+
+            <div className="flex justify-center items-center my-3">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  console.log(credentialResponse);
+                }}
+                width="100%"
+                shape="circle"
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>
