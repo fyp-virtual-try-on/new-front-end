@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import useDrivePicker from "react-google-drive-picker";
 import Webcam from "react-webcam";
 import { useDispatch } from "react-redux";
 import { favItem } from "../store/cartItem/favItemSlice";
+
 const fileTypes = ["JPG", "PNG", "GIF"];
 
 const videoConstraints = {
@@ -18,6 +19,7 @@ const ProductDetailsPage = () => {
   const [driveObj, setDriveObj] = useState("");
   const [uploadImageURL, setUploadImageURL] = useState("");
   const [isCamera, setIsCamera] = useState(false);
+  const [itemObj, setItemObj] = useState(null);
 
   const [picture, setPicture] = useState("");
   const webcamRef = React.useRef(null);
@@ -33,6 +35,12 @@ const ProductDetailsPage = () => {
       setUploadImageURL(reader.result);
     };
   };
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const token = query.get("item");
+    setItemObj(JSON.parse(token));
+  }, []);
   const handleOpenPicker = () => {
     openPicker({
       clientId:
@@ -241,15 +249,15 @@ const ProductDetailsPage = () => {
           <div class="lg:w-4/5 h-3/6 mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
-              class="lg:w-1/4 w-full  h-64 object-cover object-center rounded"
-              src="https://dummyimage.com/400x400"
+              class="lg:w-1/4 w-full h-35  object-cover object-center rounded"
+              src={itemObj?.image}
             />
             <div class="lg:w-2/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 class="text-sm title-font text-gray-500 tracking-widest">
                 BRAND NAME
               </h2>
               <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
-                The Catcher in the Rye
+                {itemObj?.name}
               </h1>
               <div class="flex mb-4">
                 <span class="flex items-center">
@@ -352,7 +360,7 @@ const ProductDetailsPage = () => {
 
               <div class="flex">
                 <span class="title-font font-medium text-2xl text-gray-900">
-                  $58.00
+                  ${itemObj?.price}.00
                 </span>
                 <button class="flex ml-auto text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black  rounded">
                   Add to Cart
