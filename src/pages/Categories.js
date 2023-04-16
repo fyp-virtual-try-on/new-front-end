@@ -69,10 +69,10 @@ const Categories = () => {
   return (
     <>
       <div
-        className="flex "
-        style={{
-          marginTop: "6rem",
-        }}
+        className="flex sm:flex-row flex-col sm:mt-24 mt-64 "
+        // style={{
+        //   marginTop: "6rem",
+        // }}
       >
         <aside
           id="default-sidebar"
@@ -120,7 +120,7 @@ const Categories = () => {
                   >
                     Search
                   </label>
-                  <div class="relative w-1/2 mx-auto">
+                  <div class="relative sm:w-1/2 w-full mx-auto">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <svg
                         aria-hidden="true"

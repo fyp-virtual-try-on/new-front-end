@@ -43,8 +43,7 @@ const FavoriteList = () => {
 
   return (
     <>
-      {console.log("fav Items => ", favItems)}
-      <h1 class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 my-20">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 my-20 sm:mt-24 mt-64">
         Favorites
       </h1>
       {favItems.map((item) => {

@@ -3,12 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <>
-      <section
-        class="text-gray-600 body-font"
-        style={{
-          marginTop: "6rem",
-        }}
-      >
+      <section class="text-gray-600 body-font sm:mt-24 mt-64">
         <div class="container px-5 py-24 mx-auto">
           <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
             <svg

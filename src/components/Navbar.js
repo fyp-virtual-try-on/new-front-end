@@ -16,6 +16,7 @@ const Navbar = () => {
   const cartItems = useSelector((state) => state.cartItems);
 
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <header class="text-gray-600 top-0 body-font absolute w-full">
@@ -32,6 +33,7 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
               style={{
                 height: "47px",
+                width: "100%",
               }}
             >
               <path
@@ -79,84 +81,91 @@ const Navbar = () => {
               <Link to="/contactus"> Contact Us </Link>
             </a>
           </nav>
-          {localStorage.getItem("metaWear") === "loggedIn" ? (
-            <>
-              <button
-                class="inline-flex items-center bg-gray-100 mx-3 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
-                // onClick={() => navigate("/")}
-                onClick={() => {
-                  localStorage.removeItem("metaWear");
-                  navigate("/");
-                }}
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                class="inline-flex items-center bg-gray-100 mx-3 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
-                onClick={() => navigate("/login")}
-              >
-                Login
-              </button>
-
-              <button
-                class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
-                onClick={() => navigate("/signup")}
-              >
-                Sign up
-              </button>
-            </>
-          )}
-          <span className="mx-2">
-            <AiOutlineHome
-              style={{ fontSize: "31px", cursor: "pointer" }}
-              onClick={() => navigate("/")}
-            />
-          </span>
-
-          {localStorage.getItem("metaWear") === "loggedIn" ? (
-            <>
-              <div class="relative w-10 h-10 mx-4 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                <svg
-                  class="absolute w-12 h-12 text-gray-400 -left-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{
-                    cursor: "pointer",
+          <div className="sm:flex flex sm:justify-center sm:items-center justify-center items-center">
+            {localStorage.getItem("metaWear") === "loggedIn" ? (
+              <>
+                <button
+                  class="inline-flex items-center bg-gray-100 mx-3 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                  // onClick={() => navigate("/")}
+                  onClick={() => {
+                    localStorage.removeItem("metaWear");
+                    navigate("/");
                   }}
-                  onClick={() => navigate("/profile")}
                 >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </div>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  class="inline-flex items-center bg-gray-100 mx-3 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                  onClick={() => navigate("/login")}
+                >
+                  Login
+                </button>
 
-              <span className="mx-2">
-                <MdOutlineFavoriteBorder
-                  style={{ fontSize: "31px", cursor: "pointer" }}
-                  onClick={() => navigate("/favorite")}
-                />
-              </span>
+                <button
+                  class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                  onClick={() => navigate("/signup")}
+                >
+                  Sign up
+                </button>
+              </>
+            )}
+            <span className="mx-2">
+              <AiOutlineHome
+                style={{ fontSize: "31px", cursor: "pointer" }}
+                onClick={() => navigate("/")}
+              />
+            </span>
 
-              <span className="mx-2 relative ">
-                <div class="inline-flex ml-3 -mb-3 items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-2.5 right-3 dark:border-gray-900">
-                  {cartItems.length}
+            {localStorage.getItem("metaWear") === "loggedIn" ? (
+              <>
+                <div class="relative w-10 h-10 mx-4 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                  <svg
+                    class="absolute w-12 h-12 text-gray-400 -left-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{
+                      cursor: "pointer",
+                    }}
+                    onClick={() => navigate("/profile")}
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
                 </div>
-                <HiShoppingCart
-                  onClick={() => setIsOpen(true)}
-                  style={{ fontSize: "31px", cursor: "pointer" }}
-                />
-              </span>
-            </>
-          ) : (
-            ""
-          )}
+
+                <span className="mx-2">
+                  <MdOutlineFavoriteBorder
+                    style={{ fontSize: "31px", cursor: "pointer" }}
+                    onClick={() => navigate("/favorite")}
+                  />
+                </span>
+
+                <span
+                  className="mx-2 relative  "
+                  style={{
+                    marginBottom: "17px",
+                  }}
+                >
+                  <div class="inline-flex ml-3 -mb-3 items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-2.5 right-3 dark:border-gray-900">
+                    {cartItems.length}
+                  </div>
+                  <HiShoppingCart
+                    onClick={() => setIsOpen(true)}
+                    style={{ fontSize: "31px", cursor: "pointer" }}
+                  />
+                </span>
+              </>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </header>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>

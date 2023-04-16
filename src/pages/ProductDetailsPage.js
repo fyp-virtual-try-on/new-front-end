@@ -66,12 +66,7 @@ const ProductDetailsPage = () => {
 
   return (
     <>
-      <div
-        className="flex container justify-around mx-auto w-4/5"
-        style={{
-          marginTop: "6rem",
-        }}
-      >
+      <div className="flex container justify-around mx-auto w-4/5 sm:flex-row flex-col sm:mt-24 mt-64">
         <div className="upload-img">
           {!uploadImageURL && !file && !isCamera && !picture ? (
             <div className="flex justify-center p-16 mb-20 flex-col items-center">
@@ -83,7 +78,7 @@ const ProductDetailsPage = () => {
               {!file && !uploadImageURL ? (
                 <>
                   <p className="my-4">OR Upload Image from</p>
-                  <div>
+                  <div className="flex justify-center">
                     <button
                       class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"
                       onClick={() => setIsCamera(true)}
@@ -91,7 +86,7 @@ const ProductDetailsPage = () => {
                       Camera App
                     </button>
                     <button
-                      class="lg:mt-2 mx-4 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black  rounded"
+                      class="lg:mt-2 sm:mx-4 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black  rounded"
                       onClick={() => handleOpenPicker()}
                     >
                       Google Drive
@@ -219,13 +214,10 @@ const ProductDetailsPage = () => {
             ""
           )}
         </div>
-        <div
-          style={{ width: "33rem" }}
-          className="p-4 h-full  flex flex-col items-center  justify-center"
-        >
+        <div className="p-4 h-full  flex flex-col items-center  justify-center">
           <div
-            className="border-2 p-4 border-gray-200 border-dashed rounded-lg dark:border-gray-700 h-296px"
-            style={{ height: "296px", width: "31rem" }}
+            className="border-2 p-4 border-gray-200 sm:w-96 w-full border-dashed rounded-lg dark:border-gray-700 h-296px"
+            style={{ height: "296px" }}
           >
             Output
           </div>

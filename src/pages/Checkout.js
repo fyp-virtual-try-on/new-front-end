@@ -6,12 +6,7 @@ import jazz from "../images/jazz.png";
 const Checkout = () => {
   return (
     <>
-      <section
-        class="text-gray-600 body-font relative"
-        style={{
-          marginTop: "6rem",
-        }}
-      >
+      <section class="text-gray-600 body-font relative sm:mt-24 mt-64">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-12">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">

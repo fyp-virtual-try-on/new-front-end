@@ -17,7 +17,7 @@ export default function FavListItem({
 }) {
   const dispatch = useDispatch();
   return (
-    <div className="border border-gray-300 flex my-5 shadow rounded-md p-4  w-1/2 mx-auto">
+    <div className="border border-gray-300 flex my-5 shadow rounded-md p-4 w-full  sm:w-1/2 mx-auto">
       <img
         class="object-cover w-full rounded-t-lg h-40  md:w-48 md:rounded-none md:rounded-l-lg"
         src={productImg}
