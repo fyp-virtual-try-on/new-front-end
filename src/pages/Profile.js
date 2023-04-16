@@ -20,7 +20,12 @@ const Profile = () => {
   return (
     <>
       {!isEditDetails ? (
-        <section class="text-gray-600 body-font">
+        <section
+          class="text-gray-600 body-font"
+          style={{
+            marginTop: "6rem",
+          }}
+        >
           <div class="container px-5 py-24 mx-auto flex flex-col">
             <div class="lg:w-4/6 mx-auto">
               <div class="flex flex-col sm:flex-row mt-10">
@@ -102,7 +107,12 @@ const Profile = () => {
           </div>
         </section>
       ) : (
-        <section class="text-gray-600 body-font relative">
+        <section
+          class="text-gray-600 body-font relative"
+          style={{
+            marginTop: "6rem",
+          }}
+        >
           <div class="container px-5 py-24 mx-auto">
             <h3 class="sm:text-3xl text-center text-2xl font-medium title-font mb-4 text-gray-900">
               Upload Profile Picture

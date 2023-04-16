@@ -15,6 +15,7 @@ const LandingPage = () => {
         class="text-gray-600 body-font "
         style={{
           backgroundColor: "aliceblue",
+          marginTop: "6rem",
         }}
       >
         <div class="container mx-auto w-4/5 flex px-5 pt-24 md:flex-row flex-col items-center">

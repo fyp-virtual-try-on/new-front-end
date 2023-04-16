@@ -58,7 +58,12 @@ const ProductDetailsPage = () => {
 
   return (
     <>
-      <div className="flex container justify-around mx-auto w-4/5">
+      <div
+        className="flex container justify-around mx-auto w-4/5"
+        style={{
+          marginTop: "6rem",
+        }}
+      >
         <div className="upload-img">
           {!uploadImageURL && !file && !isCamera && !picture ? (
             <div className="flex justify-center p-16 mb-20 flex-col items-center">
