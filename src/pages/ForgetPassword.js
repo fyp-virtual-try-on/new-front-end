@@ -8,12 +8,10 @@ const ForgetPassword = () => {
         <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
           <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
             <h1 class="title-font font-medium text-3xl text-gray-900">
-              Slow-carb next level shoindcgoitch ethical authentic, poko
-              scenester
+           Forget Password?
             </h1>
             <p class="leading-relaxed mt-4">
-              Poke slow-carb mixtape knausgaard, typewriter street art gentrify
-              hammock starladder roathse. Craies vegan tousled etsy austin.
+            "Don't remember your password? That's okay! Just enter your email address and we'll get you back in your account in no time."
             </p>
           </div>
           <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
