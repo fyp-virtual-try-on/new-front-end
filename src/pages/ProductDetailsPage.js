@@ -447,15 +447,10 @@ const ProductDetailsPage = () => {
           </p>
         </footer>
         <p class="mb-2 text-gray-500 dark:text-gray-400">
-          This is my third Invicta Pro Diver. They are just fantastic value for
-          money. This one arrived yesterday and the first thing I did was set
-          the time, popped on an identical strap from another Invicta and went
-          in the shower with it to test the waterproofing.... No problems.
+        I recently purchased a women's T-shirt from your website using the virtual try-on feature, and I have to say it was a fantastic experience. The virtual try-on feature allowed me to see how the T-shirt would look on me before making a purchase, which helped me make an informed decision about the product.
         </p>
         <p class="mb-3 text-gray-500 dark:text-gray-400">
-          It is obviously not the same build quality as those very expensive
-          watches. But that is like comparing a Citroën to a Ferrari. This watch
-          was well under £100! An absolute bargain.
+        Overall, I would highly recommend this women's T-shirt to anyone who is looking for a comfortable and stylish clothing item. The virtual try-on feature on your website was a game-changer, and I will definitely be using it again in the future.
         </p>
         <a
           href="#"
@@ -491,8 +486,7 @@ const ProductDetailsPage = () => {
               Leave a Review
             </h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Contact us if you experience any issues with our virtual try-on
-              service. Our team is here to assist you.
+            Your feedback is valuable to us! Please take a moment to leave a review and let us know how we did.
             </p>
           </div>
           <div class="lg:w-3/4 md:w-2/3 mx-auto">

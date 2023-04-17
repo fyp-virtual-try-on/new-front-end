@@ -58,7 +58,7 @@ const LandingPage = () => {
         <div class="container px-5 py-24 w-4/5 mx-auto flex items-center md:flex-row flex-col">
           <div class="flex flex-col md:pr-10 md:mb-0 mb-6 pr-0 w-full md:w-auto md:text-left text-center">
             <h2 class="text-xs text-darkSlateBlue tracking-widest font-medium title-font mb-1">
-              Metawerse
+              Metawear
             </h2>
             <h1 class="md:text-3xl text-2xl font-medium title-font text-gray-900">
               Mapping your favourite outfits on your 2d images so you can
@@ -253,7 +253,7 @@ const LandingPage = () => {
                 />
                 <h3 class="tracking-widest text-darkSlateBlue text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
-                  Great Pyramid of Giza
+                  T-Shirt
                 </h2>
 
                 <div class="flex items-center">
@@ -321,7 +321,7 @@ const LandingPage = () => {
                 />
                 <h3 class="tracking-widest text-darkSlateBlue text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
-                  Great Pyramid of Giza
+                  T Shirt
                 </h2>
 
                 <div class="flex items-center">
@@ -389,7 +389,7 @@ const LandingPage = () => {
                 />
                 <h3 class="tracking-widest text-darkSlateBlue text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
-                  Great Pyramid of Giza
+                  T Shirt
                 </h2>
 
                 <div class="flex items-center">
@@ -457,7 +457,7 @@ const LandingPage = () => {
                 />
                 <h3 class="tracking-widest text-darkSlateBlue text-xs font-medium title-font"></h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
-                  Great Pyramid of Giza
+                  T Shirt
                 </h2>
 
                 <div class="flex items-center">
@@ -527,7 +527,7 @@ const LandingPage = () => {
               Metawerse Works for All the Brands & Clients
             </h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-              virtual try-on services can be a valuable tool for online brands
+              Virtual try-on services can be a valuable tool for online brands
               looking to enhance their customers' shopping experience. By
               integrating a virtual try-on system into their website, online
               brands can offer their customers the ability to try on clothes

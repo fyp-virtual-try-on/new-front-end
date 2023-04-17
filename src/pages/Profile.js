@@ -45,13 +45,11 @@ const Profile = () => {
                   </div>
                   <div class="flex flex-col items-center text-center justify-center">
                     <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">
-                      MaRiYa ABiD
+                     Edward Jones
                     </h2>
                     <div class="w-12 h-1 bg-darkSlateBlue rounded mt-2 mb-4"></div>
                     <p class="text-base">
-                      Raclette knausgaard hella meggs normcore williamsburg
-                      enamel pin sartorial venmo tbh hot chicken gentrify
-                      portland.
+                     
                     </p>
                   </div>
                 </div>
@@ -76,7 +74,7 @@ const Profile = () => {
                     {" "}
                     <span className="font-bold">
                       Email :
-                    </span> mariya@gmail.com{" "}
+                    </span> Edward@gmail.com{" "}
                   </p>
                   <p class="leading-relaxed text-lg mb-4">
                     {" "}

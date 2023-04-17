@@ -26,7 +26,7 @@ const Categories = () => {
     },
     {
       id: 2,
-      name: "Shirt",
+      name: "T Shirt",
       image: img2,
       quantity: 1,
       price: 200,
@@ -34,7 +34,7 @@ const Categories = () => {
     },
     {
       id: 3,
-      name: "Pant",
+      name: "T Shirt",
       image: img3,
       quantity: 1,
       price: 300,
@@ -42,7 +42,7 @@ const Categories = () => {
     },
     {
       id: 4,
-      name: "Shoes",
+      name:  "T Shirt",
       image: img4,
       quantity: 1,
       price: 400,
@@ -50,7 +50,7 @@ const Categories = () => {
     },
     {
       id: 5,
-      name: "Shoes",
+      name:  "T Shirt",
       image: img5,
       quantity: 1,
       price: 400,
@@ -58,7 +58,7 @@ const Categories = () => {
     },
     {
       id: 6,
-      name: "Shoes",
+      name:  "T Shirt",
       image: img6,
       quantity: 1,
       price: 400,
@@ -142,7 +142,7 @@ const Categories = () => {
                       type="search"
                       id="default-search"
                       class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search Mockups, Logos..."
+                      placeholder="Search Catogories..."
                       required
                     />
                     <button
