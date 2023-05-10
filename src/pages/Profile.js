@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { FileUploader } from "react-drag-drop-files";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 const fileTypes = ["JPG", "PNG", "GIF"];
 
 const Profile = () => {
@@ -9,6 +10,9 @@ const Profile = () => {
   const [isEditDetails, setIsEditDetails] = useState(false);
   const [file, setFile] = useState(null);
   const [uploadImageURL, setUploadImageURL] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [id, setId] = useState("");
   const handleChange = (file) => {
     setFile(file);
     const reader = new FileReader();
@@ -17,6 +21,22 @@ const Profile = () => {
       setUploadImageURL(reader.result);
     };
   };
+  const getData = async () => {
+    await axios
+      .get(`http://localhost:5000/api/users/${localStorage.getItem("userId")}`)
+      .then((res) => {
+        console.log(res);
+        setEmail(res.data.email);
+        setName(res.data.name);
+        setId(res.data._id);
+      })
+      .catch((err) => {
+        console.log(err.response.data.msg);
+      });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
       {!isEditDetails ? (
@@ -45,12 +65,10 @@ const Profile = () => {
                   </div>
                   <div class="flex flex-col items-center text-center justify-center">
                     <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">
-                     Edward Jones
+                      {name ? name : "not found"}
                     </h2>
                     <div class="w-12 h-1 bg-darkSlateBlue rounded mt-2 mb-4"></div>
-                    <p class="text-base">
-                     
-                    </p>
+                    <p class="text-base"></p>
                   </div>
                 </div>
                 <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
@@ -68,13 +86,13 @@ const Profile = () => {
                   </p>
                   <p class="leading-relaxed text-lg mb-4">
                     {" "}
-                    <span className="font-bold">User ID :</span> 123{" "}
+                    <span className="font-bold">User ID :</span>{" "}
+                    {id ? id : "not found"}
                   </p>
                   <p class="leading-relaxed text-lg mb-4">
                     {" "}
-                    <span className="font-bold">
-                      Email :
-                    </span> Edward@gmail.com{" "}
+                    <span className="font-bold">Email :</span>{" "}
+                    {email ? email : "not found"}{" "}
                   </p>
                   <p class="leading-relaxed text-lg mb-4">
                     {" "}

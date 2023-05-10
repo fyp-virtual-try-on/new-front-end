@@ -82,13 +82,13 @@ const Navbar = () => {
             </a>
           </nav>
           <div className="sm:flex flex sm:justify-center sm:items-center justify-center items-center">
-            {localStorage.getItem("metaWear") === "loggedIn" ? (
+            {localStorage.getItem("token") ? (
               <>
                 <button
                   class="inline-flex items-center bg-gray-100 mx-3 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
                   // onClick={() => navigate("/")}
                   onClick={() => {
-                    localStorage.removeItem("metaWear");
+                    localStorage.removeItem("token");
                     navigate("/");
                   }}
                 >
@@ -119,7 +119,7 @@ const Navbar = () => {
               />
             </span>
 
-            {localStorage.getItem("metaWear") === "loggedIn" ? (
+            {localStorage.getItem("token") ? (
               <>
                 <div class="relative w-10 h-10 mx-4 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                   <svg

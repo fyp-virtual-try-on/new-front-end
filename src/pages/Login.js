@@ -1,9 +1,40 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 const Login = () => {
   const navigate = useNavigate();
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [msg, setMsg] = useState(null);
+  const sendData = async () => {
+    if (password && email) {
+      await axios
+        .post("http://localhost:5000/api/users/login", {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          console.log(res.data.token);
+          setEmail("");
+          setPassword("");
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("userId", res.data.userId);
+          navigate("/");
+        })
+        .catch((err) => {
+          setMsg(err.response.data.msg);
+          setIsError(true);
+          console.log(err.response.data.msg);
+        });
+    } else {
+      setMsg("Fill the form completely!");
+      setIsError(true);
+    }
+  };
   return (
     <>
       <section class="text-gray-600 body-font sm:mt-24 mt-64">
@@ -22,6 +53,24 @@ const Login = () => {
             <h2 class="text-gray-900 text-lg font-medium title-font mb-5">
               Login
             </h2>
+            {isError && msg && (
+              <div
+                class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert"
+              >
+                <span class="font-medium">Error!</span> {msg}
+              </div>
+            )}
+
+            {isSuccess && msg && (
+              <div
+                class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                role="alert"
+              >
+                <span class="font-medium">Success!</span>
+                &nbsp;{msg}
+              </div>
+            )}
             <div class="relative mb-4">
               <label for="email" class="leading-7 text-sm text-gray-600">
                 Email
@@ -29,6 +78,10 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 name="email"
                 class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
@@ -41,6 +94,10 @@ const Login = () => {
                 type={`${isShowPassword ? "text" : "password"}`}
                 id="full-name"
                 name="full-name"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               <div class="flex items-center mt-4 mb-4">
@@ -71,8 +128,7 @@ const Login = () => {
             <button
               class="text-white bg-darkSlateBlue border-2 py-2 px-8 focus:outline-none hover:bg-white hover:text-black rounded text-lg"
               onClick={() => {
-                localStorage.setItem("metaWear", "loggedIn");
-                navigate("/");
+                sendData();
               }}
             >
               Login
