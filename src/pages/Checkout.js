@@ -1,11 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import cod from "../images/cod.png";
 import easypaisa from "../images/easypaisa.png";
 import jazz from "../images/jazz.png";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Checkout = () => {
+  const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cartItems);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+  const [zip, setZip] = useState("");
+  const [cardHolderName, setCardHolderName] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
+
+  const sendData = async () => {
+    if (
+      cartItems.length > 0 &&
+      name !== "" &&
+      email !== "" &&
+      city !== "" &&
+      address !== "" &&
+      zip !== "" &&
+      cardHolderName !== "" &&
+      cardNumber !== "" &&
+      expiryDate !== "" &&
+      cvv !== ""
+    ) {
+      await axios
+        .post("http://localhost:5000/api/users/orders", {
+          user: localStorage.getItem("userId"),
+          products: cartItems,
+          personalDetails: {
+            name: name,
+            email: email,
+            city: city,
+            address: address,
+            zip: zip,
+            cardHolderName: cardHolderName,
+            cardNumber: cardNumber,
+            expiryDate: expiryDate,
+            cvv: cvv,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          alert("Order placed successfully!");
+          setName("");
+          setEmail("");
+          setCity("");
+          setAddress("");
+          setZip("");
+          setCardHolderName("");
+          setCardNumber("");
+          setExpiryDate("");
+          setCvv("");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      alert("Please fill all the fields!");
+    }
+  };
+
   return (
     <>
+      {console.log("cartItems => ", cartItems)}
       <section class="text-gray-600 body-font relative sm:mt-24 mt-64">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-12">
@@ -23,6 +89,8 @@ const Checkout = () => {
                   <input
                     type="text"
                     id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     name="name"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -36,6 +104,8 @@ const Checkout = () => {
                   <input
                     type="email"
                     id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     name="email"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -49,6 +119,8 @@ const Checkout = () => {
                   <input
                     type="text"
                     id="email"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                     name="email"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -62,6 +134,8 @@ const Checkout = () => {
                   <input
                     type="text"
                     id="email"
+                    value={zip}
+                    onChange={(e) => setZip(e.target.value)}
                     name="email"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -75,6 +149,8 @@ const Checkout = () => {
                   <textarea
                     id="message"
                     name="message"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                   ></textarea>
                 </div>
@@ -88,6 +164,8 @@ const Checkout = () => {
                     type="text"
                     id="email"
                     name="email"
+                    value={cardHolderName}
+                    onChange={(e) => setCardHolderName(e.target.value)}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -100,7 +178,39 @@ const Checkout = () => {
                   <input
                     type="text"
                     id="email"
+                    value={cardNumber}
+                    onChange={(e) => setCardNumber(e.target.value)}
                     name="email"
+                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </div>
+              </div>
+              <div class="p-2 w-full">
+                <div class="relative">
+                  <label for="email" class="leading-7 text-sm text-gray-600">
+                    CVV
+                  </label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="cvv"
+                    value={cvv}
+                    onChange={(e) => setCvv(e.target.value)}
+                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </div>
+              </div>
+              <div class="p-2 w-full">
+                <div class="relative">
+                  <label for="email" class="leading-7 text-sm text-gray-600">
+                    Expiry Date
+                  </label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    value={expiryDate}
+                    onChange={(e) => setExpiryDate(e.target.value)}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -166,8 +276,17 @@ const Checkout = () => {
                 </div>
               </fieldset>
 
-              <div class="p-2 w-full">
-                <button class="flex mx-auto text-white bg-darkSlateBlue border-2 py-2 px-8 focus:outline-none hover:bg-white hover:text-black rounded text-lg">
+              <div class="p-2 flex justify-center w-full">
+                <button
+                  class="flex  text-white bg-darkSlateBlue border-2 py-2 px-8 focus:outline-none hover:bg-white hover:text-black rounded text-lg"
+                  onClick={() => navigate("/categories")}
+                >
+                  Cancel Order
+                </button>
+                <button
+                  class="flex mx-3 text-white bg-darkSlateBlue border-2 py-2 px-8 focus:outline-none hover:bg-white hover:text-black rounded text-lg"
+                  onClick={() => sendData()}
+                >
                   Place Order
                 </button>
               </div>

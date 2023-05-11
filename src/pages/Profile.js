@@ -69,6 +69,12 @@ const Profile = () => {
                     </h2>
                     <div class="w-12 h-1 bg-darkSlateBlue rounded mt-2 mb-4"></div>
                     <p class="text-base"></p>
+                    <button
+                      class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                      onClick={() => navigate("/pastOrders")}
+                    >
+                      View Past Orders
+                    </button>
                   </div>
                 </div>
                 <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">

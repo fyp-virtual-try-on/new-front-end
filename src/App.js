@@ -14,6 +14,7 @@ import About from "./pages/About";
 import FavoriteList from "./pages/FavoriteList";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewPassword from "./pages/NewPassword";
+import PastOrders from "./pages/PastOrders";
 import Profile from "./pages/Profile";
 import ForgetPassword from "./pages/ForgetPassword";
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/newPassword" element={<NewPassword />} />
         <Route path="/changePassword" element={<ChangePassword />} />
         <Route path="/dresses" element={<Dresses />} />
+        <Route path="/pastOrders" element={<PastOrders />} />
         <Route path="/favorite" element={<FavoriteList />} />
         <Route path="/productDetailsPage" element={<ProductDetailsPage />} />
 
