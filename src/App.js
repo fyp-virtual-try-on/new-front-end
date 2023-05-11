@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import LandingPage from "./pages/LandingPage";
 import Footer from "./components/Footer";
@@ -12,6 +12,7 @@ import ChangePassword from "./pages/ChangePassword";
 import ContactUs from "./pages/ContactUs";
 import Checkout from "./pages/Checkout";
 import About from "./pages/About";
+import "flowbite/dist/flowbite.min.js";
 import FavoriteList from "./pages/FavoriteList";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewPassword from "./pages/NewPassword";
@@ -22,6 +23,7 @@ import Help from "./pages/Help";
 import ForgetPassword from "./pages/ForgetPassword";
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
     <>
       <Navbar />

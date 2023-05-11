@@ -6,7 +6,6 @@ import axios from "axios";
 import { FiSettings } from "react-icons/fi";
 import { FiHelpCircle } from "react-icons/fi";
 import { MdOutlinePrivacyTip } from "react-icons/md";
-import "flowbite/dist/flowbite.min.js";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -16,6 +15,7 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
   const [file, setFile] = useState(null);
   const [uploadImageURL, setUploadImageURL] = useState("");
   const [name, setName] = useState("");
+  const [isSettings, setIsSettings] = useState(false);
   const [email, setEmail] = useState("");
 
   const [id, setId] = useState("");
@@ -27,6 +27,12 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
       setUploadImageURL(reader.result);
     };
   };
+  useEffect(() => {
+    if (window.FBPopover) {
+      window.FBPopover.init();
+    }
+  }, []);
+
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
@@ -89,94 +95,98 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
                     </h2>
                     <div class="w-12 h-1 bg-darkSlateBlue rounded mt-2 mb-4"></div>
                     <p class="text-base"></p>
-                    <div className="flex gap-3">
-                      <button
-                        class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
-                        onClick={() => navigate("/pastOrders")}
-                      >
-                        View Past Orders
-                      </button>
+                    <button
+                      class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                      onClick={() => navigate("/pastOrders")}
+                    >
+                      View Past Orders
+                    </button>
+
+                    <div className="flex gap-3 flex-col">
                       <span
-                        data-popover-target="popover-default"
-                        data-popover-placement="bottom"
+                        className="flex justify-center items-center my-5"
+                        onClick={() => setIsSettings(!isSettings)}
                       >
                         <FiSettings
                           style={{ fontSize: "31px", cursor: "pointer" }}
                         />
                       </span>
-                      <div
-                        data-popover
-                        id="popover-default"
-                        role="tooltip"
-                        class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
-                      >
-                        <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                          <h3 class="font-semibold text-gray-900 dark:text-white">
-                            Settings
-                          </h3>
-                        </div>
-                        <div class="px-3 py-2">
-                          <p className="my-3">
-                            <label class="relative inline-flex items-center cursor-pointer">
-                              <input
-                                type="checkbox"
-                                value=""
-                                class="sr-only peer"
-                              />
-                              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                Turn on/off notifications
-                              </span>
-                            </label>
-                          </p>
-                          <p>
-                            <label class="relative inline-flex items-center cursor-pointer">
-                              <input
-                                type="checkbox"
-                                value=""
-                                onChange={() => toggleDarkMode()}
-                                class="sr-only peer"
-                              />
-                              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                Dark Mode
-                              </span>
-                            </label>
-                          </p>
 
-                          <p className="my-3">
-                            <label
-                              class="relative inline-flex items-center cursor-pointer"
-                              onClick={() => navigate("/privacy")}
-                            >
-                              <MdOutlinePrivacyTip
-                                style={{
-                                  fontSize: "28px",
-                                }}
-                              />
-                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                Privacy
-                              </span>
-                            </label>
-                          </p>
-                          <p className="my-3">
-                            <label
-                              class="relative inline-flex items-center cursor-pointer"
-                              onClick={() => navigate("/help")}
-                            >
-                              <FiHelpCircle
-                                style={{
-                                  fontSize: "28px",
-                                }}
-                              />
-                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                Help
-                              </span>
-                            </label>
-                          </p>
+                      {isSettings && (
+                        <div
+                        // data-popover
+                        // id="popover-default"
+                        // role="tooltip"
+                        // class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
+                        >
+                          <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                            <h3 class="font-semibold text-gray-900 dark:text-white">
+                              Settings
+                            </h3>
+                          </div>
+                          <div class="px-3 py-2">
+                            <p className="my-3">
+                              <label class="relative inline-flex items-center cursor-pointer">
+                                <input
+                                  type="checkbox"
+                                  value=""
+                                  class="sr-only peer"
+                                />
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                  Turn on/off notifications
+                                </span>
+                              </label>
+                            </p>
+                            <p>
+                              <label class="relative inline-flex items-center cursor-pointer">
+                                <input
+                                  type="checkbox"
+                                  checked={isDarkMode}
+                                  onChange={() => toggleDarkMode()}
+                                  class="sr-only peer"
+                                />
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                  Dark Mode
+                                </span>
+                              </label>
+                            </p>
+
+                            <p className="my-3">
+                              <label
+                                class="relative inline-flex items-center cursor-pointer"
+                                onClick={() => navigate("/privacy")}
+                              >
+                                <MdOutlinePrivacyTip
+                                  style={{
+                                    fontSize: "28px",
+                                  }}
+                                />
+                                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                  Privacy
+                                </span>
+                              </label>
+                            </p>
+                            <p className="my-3">
+                              <label
+                                class="relative inline-flex items-center cursor-pointer"
+                                onClick={() => navigate("/help")}
+                              >
+                                <FiHelpCircle
+                                  style={{
+                                    fontSize: "28px",
+                                  }}
+                                />
+                                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                  Help
+                                </span>
+                              </label>
+                            </p>
+                          </div>
+                          {/* <div data-popper-arrow></div> */}
                         </div>
-                        <div data-popper-arrow></div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>
