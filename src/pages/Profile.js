@@ -6,6 +6,7 @@ import axios from "axios";
 import { FiSettings } from "react-icons/fi";
 import { FiHelpCircle } from "react-icons/fi";
 import { MdOutlinePrivacyTip } from "react-icons/md";
+import "flowbite/dist/flowbite.min.js";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 

@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import img from "./../images/hero-img.png";
 import img1 from "./../images/1.jpg";
 import img2 from "./../images/2.jpg";
 import img3 from "./../images/3.jpg";
 import img4 from "./../images/4.jpg";
 import img5 from "./../images/5.jpg";
 import img6 from "./../images/6.jpg";
+import kImg1 from "./../images/kurties/1.jpg";
+import kImg2 from "./../images/kurties/2.jpg";
+import kImg3 from "./../images/kurties/3.jpg";
+import kImg4 from "./../images/kurties/4.jpg";
+import kImg5 from "./../images/kurties/5.jpg";
+import kImg6 from "./../images/kurties/6.jpg";
+import kImg7 from "./../images/kurties/7.jpg";
+
+import fImg1 from "./../images/froks/1.jpg";
+import fImg2 from "./../images/froks/2.jpg";
+import fImg3 from "./../images/froks/3.jpg";
+import fImg4 from "./../images/froks/4.jpg";
+import fImg5 from "./../images/froks/5.jpg";
+import fImg6 from "./../images/froks/6.jpg";
+import fImg7 from "./../images/froks/7.jpg";
+import fImg8 from "./../images/froks/8.jpg";
+import fImg9 from "./../images/froks/9.jpg";
 
 import { useDispatch } from "react-redux";
 import { cartItem } from "../store/cartItem/cartItemSlice";
@@ -16,7 +32,11 @@ import { removeAllItems } from "../store/cartItem/cartItemSlice";
 const Categories = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const items = [
+  const [isTshirts, setIsTshirts] = useState(true);
+  const [isKurti, setIsKurti] = useState(false);
+  const [isFroks, setIsFroks] = useState(false);
+
+  const tshirts = [
     {
       id: 1,
       name: "T-Shirt",
@@ -66,6 +86,143 @@ const Categories = () => {
       totalPrice: 400,
     },
   ];
+  const kurti = [
+    {
+      id: 1,
+      name: "Kurti",
+      image: kImg1,
+      quantity: 1,
+      price: 100,
+      totalPrice: 100,
+    },
+    {
+      id: 2,
+      name: "Kurti",
+      image: kImg2,
+      quantity: 1,
+      price: 200,
+      totalPrice: 200,
+    },
+    {
+      id: 3,
+      name: "Kurti",
+      image: kImg3,
+      quantity: 1,
+      price: 300,
+      totalPrice: 300,
+    },
+    {
+      id: 4,
+      name: "Kurti",
+      image: kImg4,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 5,
+      name: "Kurti",
+      image: kImg5,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 6,
+      name: "Kurti",
+      image: kImg6,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 7,
+      name: "Kurti",
+      image: kImg7,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+  ];
+  const froks = [
+    {
+      id: 1,
+      name: "Frok",
+      image: fImg1,
+      quantity: 1,
+      price: 100,
+      totalPrice: 100,
+    },
+    {
+      id: 2,
+      name: "Frok",
+      image: fImg2,
+      quantity: 1,
+      price: 200,
+      totalPrice: 200,
+    },
+    {
+      id: 3,
+      name: "Frok",
+      image: fImg3,
+      quantity: 1,
+      price: 300,
+      totalPrice: 300,
+    },
+    {
+      id: 4,
+      name: "Frok",
+      image: fImg4,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 5,
+      name: "Frok",
+      image: fImg5,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 6,
+      name: "Frok",
+      image: fImg6,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 7,
+      name: "Frok",
+      image: fImg7,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 8,
+      name: "Frok",
+      image: fImg8,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+    {
+      id: 9,
+      name: "Frok",
+      image: fImg9,
+      quantity: 1,
+      price: 400,
+      totalPrice: 400,
+    },
+  ];
+
+  const active = {
+    backgroundColor: "rgb(198 198 198)",
+    color: "#fff",
+  };
 
   return (
     <>
@@ -82,7 +239,14 @@ const Categories = () => {
         >
           <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
-              <li>
+              <li
+                style={isTshirts ? active : null}
+                onClick={() => {
+                  setIsTshirts(true);
+                  setIsKurti(false);
+                  setIsFroks(false);
+                }}
+              >
                 <a
                   href="#"
                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -90,15 +254,29 @@ const Categories = () => {
                   <span class="ml-3">T-Shirts</span>
                 </a>
               </li>
-              <li>
+              <li
+                style={isKurti ? active : null}
+                onClick={() => {
+                  setIsTshirts(false);
+                  setIsKurti(true);
+                  setIsFroks(false);
+                }}
+              >
                 <a
                   href="#"
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  class="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <span class="flex-1 ml-3 whitespace-nowrap">Kurti</span>
                 </a>
               </li>
-              <li>
+              <li
+                style={isFroks ? active : null}
+                onClick={() => {
+                  setIsTshirts(false);
+                  setIsKurti(false);
+                  setIsFroks(true);
+                }}
+              >
                 <a
                   href="#"
                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -159,80 +337,235 @@ const Categories = () => {
                   class="flex flex-wrap -m-4  justify-center"
                   style={{ gap: "33px" }}
                 >
-                  {items.map((item) => {
-                    return (
-                      <>
-                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
-                          <a class="block relative h-auto rounded overflow-hidden">
-                            <img
-                              alt="ecommerce"
-                              class="object-cover object-center w-full h-full block"
-                              src={item.image}
-                            />
-                          </a>
-                          <div class="mt-4">
-                            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                              CATEGORY
-                            </h3>
-                            <h2 class="text-gray-900 flex justify-between title-font text-lg font-medium">
-                              <span>{item.name}</span>{" "}
-                              <button
-                                class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
-                                onClick={() => dispatch(favItem(item))}
-                              >
-                                <svg
-                                  fill="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  class="w-5 h-5"
-                                  viewBox="0 0 24 24"
+                  {isTshirts &&
+                    tshirts.map((item) => {
+                      return (
+                        <>
+                          <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
+                            <a class="block relative h-auto rounded overflow-hidden">
+                              <img
+                                alt="ecommerce"
+                                class="object-cover object-center w-full h-full block"
+                                src={item.image}
+                              />
+                            </a>
+                            <div class="mt-4">
+                              <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                                CATEGORY
+                              </h3>
+                              <h2 class="text-gray-900 flex justify-between title-font text-lg font-medium">
+                                <span>{item.name}</span>{" "}
+                                <button
+                                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                                  onClick={() => dispatch(favItem(item))}
                                 >
-                                  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                                </svg>
-                              </button>
-                            </h2>
-                            <div className="flex justify-between items-center my-3">
-                              <p class="mt-1 ">${item.price}.00</p>
-                              <p class=" text-gray-500  ">
-                                {" "}
-                                <a
-                                  onClick={() => {
-                                    dispatch(removeAllItems());
-                                    dispatch(cartItem(item));
-                                    navigate("/checkout");
-                                  }}
-                                  className="cursor-pointer"
+                                  <svg
+                                    fill="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    class="w-5 h-5"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                  </svg>
+                                </button>
+                              </h2>
+                              <div className="flex justify-between items-center my-3">
+                                <p class="mt-1 ">${item.price}.00</p>
+                                <p class=" text-gray-500  ">
+                                  {" "}
+                                  <a
+                                    onClick={() => {
+                                      dispatch(removeAllItems());
+                                      dispatch(cartItem(item));
+                                      navigate("/checkout");
+                                    }}
+                                    className="cursor-pointer"
+                                  >
+                                    Buy Now
+                                  </a>{" "}
+                                </p>
+                              </div>
+                              <div className="flex justify-between">
+                                <button
+                                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"
+                                  onClick={() => dispatch(cartItem(item))}
                                 >
-                                  Buy Now
-                                </a>{" "}
-                              </p>
-                            </div>
-                            <div className="flex justify-between">
-                              <button
-                                class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"
-                                onClick={() => dispatch(cartItem(item))}
-                              >
-                                Add to Cart
-                              </button>
-                              <button
-                                class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded "
-                                onClick={() =>
-                                  navigate(
-                                    `/productDetailsPage?item=${JSON.stringify(
-                                      item
-                                    )}`
-                                  )
-                                }
-                              >
-                                Try
-                              </button>
+                                  Add to Cart
+                                </button>
+                                <button
+                                  class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded "
+                                  onClick={() =>
+                                    navigate(
+                                      `/productDetailsPage?item=${JSON.stringify(
+                                        item
+                                      )}`
+                                    )
+                                  }
+                                >
+                                  Try
+                                </button>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </>
-                    );
-                  })}
+                        </>
+                      );
+                    })}
+                  {isKurti &&
+                    kurti.map((item) => {
+                      return (
+                        <>
+                          <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
+                            <a class="block relative h-auto rounded overflow-hidden">
+                              <img
+                                alt="ecommerce"
+                                class="object-cover object-center w-full h-full block"
+                                src={item.image}
+                              />
+                            </a>
+                            <div class="mt-4">
+                              <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                                CATEGORY
+                              </h3>
+                              <h2 class="text-gray-900 flex justify-between title-font text-lg font-medium">
+                                <span>{item.name}</span>{" "}
+                                <button
+                                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                                  onClick={() => dispatch(favItem(item))}
+                                >
+                                  <svg
+                                    fill="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    class="w-5 h-5"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                  </svg>
+                                </button>
+                              </h2>
+                              <div className="flex justify-between items-center my-3">
+                                <p class="mt-1 ">${item.price}.00</p>
+                                <p class=" text-gray-500  ">
+                                  {" "}
+                                  <a
+                                    onClick={() => {
+                                      dispatch(removeAllItems());
+                                      dispatch(cartItem(item));
+                                      navigate("/checkout");
+                                    }}
+                                    className="cursor-pointer"
+                                  >
+                                    Buy Now
+                                  </a>{" "}
+                                </p>
+                              </div>
+                              <div className="flex justify-between">
+                                <button
+                                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"
+                                  onClick={() => dispatch(cartItem(item))}
+                                >
+                                  Add to Cart
+                                </button>
+                                <button
+                                  class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded "
+                                  onClick={() =>
+                                    navigate(
+                                      `/productDetailsPage?item=${JSON.stringify(
+                                        item
+                                      )}`
+                                    )
+                                  }
+                                >
+                                  Try
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  {isFroks &&
+                    froks.map((item) => {
+                      return (
+                        <>
+                          <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
+                            <a class="block relative h-auto rounded overflow-hidden">
+                              <img
+                                alt="ecommerce"
+                                class=" w-full block"
+                                src={item.image}
+                                style={{
+                                  height: "300px",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            </a>
+                            <div class="mt-4">
+                              <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                                CATEGORY
+                              </h3>
+                              <h2 class="text-gray-900 flex justify-between title-font text-lg font-medium">
+                                <span>{item.name}</span>{" "}
+                                <button
+                                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                                  onClick={() => dispatch(favItem(item))}
+                                >
+                                  <svg
+                                    fill="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    class="w-5 h-5"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                  </svg>
+                                </button>
+                              </h2>
+                              <div className="flex justify-between items-center my-3">
+                                <p class="mt-1 ">${item.price}.00</p>
+                                <p class=" text-gray-500  ">
+                                  {" "}
+                                  <a
+                                    onClick={() => {
+                                      dispatch(removeAllItems());
+                                      dispatch(cartItem(item));
+                                      navigate("/checkout");
+                                    }}
+                                    className="cursor-pointer"
+                                  >
+                                    Buy Now
+                                  </a>{" "}
+                                </p>
+                              </div>
+                              <div className="flex justify-between">
+                                <button
+                                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"
+                                  onClick={() => dispatch(cartItem(item))}
+                                >
+                                  Add to Cart
+                                </button>
+                                <button
+                                  class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded "
+                                  onClick={() =>
+                                    navigate(
+                                      `/productDetailsPage?item=${JSON.stringify(
+                                        item
+                                      )}`
+                                    )
+                                  }
+                                >
+                                  Try
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
                 </div>
               </div>
             </section>

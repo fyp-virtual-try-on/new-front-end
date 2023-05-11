@@ -10,19 +10,21 @@ const Help = () => {
               Help
             </h1>
             <p class="lg:w-2/3 my-4 mx-auto leading-relaxed text-base">
-              Contact us if you experience any issues with our virtual try-on
-              service. Our team is here to assist you.
+              Welcome to our virtual try-on platform! Our website provides an
+              innovative and user-friendly way to try upper body outfits from
+              the comfort of your own home. Here's a helpful guide to help you
+              get started: Upload your photo: The first step is to upload a
+              photo of yourself. Make sure the photo is well-lit and shows your
+              upper body clearly. You can choose to upload a photo from your
+              computer or take a new one with your webcam
             </p>
             <p class="lg:w-2/3 my-4 mx-auto leading-relaxed text-base">
-              Contact us if you experience any issues with our virtual try-on
-              service. Our team is here to assist you. Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Odit quos quibusdam placeat
-              facilis esse molestiae odio magni ratione praesentium, rem commodi
-              aspernatur dolor magnam. Nam voluptates impedit blanditiis cum
-              asperiores repellendus iure deserunt possimus deleniti
-              perspiciatis suscipit, numquam aspernatur qui quisquam earum,
-              fugiat facere repudiandae sapiente praesentium, assumenda dicta
-              dolores nisi? Consequuntur quae illum tempora.
+              Choose your outfit: Browse through our collection of t-shirts and
+              upper body outfits. You can filter your search by color, style,
+              and size. Click on an item to see it on your virtual try-on model.
+              Save and share: Once you've found the perfect outfit, you can save
+              it to your profile or share it on social media. You can also add
+              items to your wish list for future reference.
             </p>
           </div>
         </div>

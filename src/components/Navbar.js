@@ -7,7 +7,6 @@ import { AiOutlineHome } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import logo from "../images/logoNew.png";
 import { ReactComponent as Logo } from "../images/b_logo.svg";
-import "flowbite/dist/flowbite.min.js";
 import Drawer from "./Drawer";
 import Card from "./Card";
 
