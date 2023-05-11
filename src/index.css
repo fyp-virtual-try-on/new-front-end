@@ -14,3 +14,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+:root {
+  --bg-color: #fff; /* Light mode background color */
+  --text-color: #000; /* Light mode text color */
+}
+
+:root.dark {
+  --bg-color: #000; /* Dark mode background color */
+  --text-color: #fff; /* Dark mode text color */
+  background-color: black;
+  color: white;
+}

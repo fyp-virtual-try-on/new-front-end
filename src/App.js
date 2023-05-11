@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import LandingPage from "./pages/LandingPage";
 import Footer from "./components/Footer";
@@ -20,6 +21,7 @@ import Privacy from "./pages/Privacy";
 import Help from "./pages/Help";
 import ForgetPassword from "./pages/ForgetPassword";
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   return (
     <>
       <Navbar />
@@ -31,7 +33,12 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <Profile isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+          }
+        />
         <Route path="/forgetPassword" element={<ForgetPassword />} />
         <Route path="/newPassword" element={<NewPassword />} />
         <Route path="/changePassword" element={<ChangePassword />} />

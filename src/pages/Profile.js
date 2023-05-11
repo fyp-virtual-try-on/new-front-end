@@ -10,13 +10,14 @@ import "flowbite/dist/flowbite.min.js";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
-const Profile = () => {
+const Profile = ({ isDarkMode, setIsDarkMode }) => {
   const navigate = useNavigate();
   const [isEditDetails, setIsEditDetails] = useState(false);
   const [file, setFile] = useState(null);
   const [uploadImageURL, setUploadImageURL] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
   const [id, setId] = useState("");
   const handleChange = (file) => {
     setFile(file);
@@ -25,6 +26,9 @@ const Profile = () => {
     reader.onload = () => {
       setUploadImageURL(reader.result);
     };
+  };
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
   };
   const getData = async () => {
     await axios
@@ -39,9 +43,20 @@ const Profile = () => {
         console.log(err.response.data.msg);
       });
   };
+
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    const body = document.querySelector("html");
+    if (isDarkMode) {
+      body.classList.add("dark");
+    } else {
+      body.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
   return (
     <>
       {!isEditDetails ? (
@@ -119,6 +134,7 @@ const Profile = () => {
                               <input
                                 type="checkbox"
                                 value=""
+                                onChange={() => toggleDarkMode()}
                                 class="sr-only peer"
                               />
                               <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
