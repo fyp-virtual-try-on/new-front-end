@@ -3,6 +3,10 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { FileUploader } from "react-drag-drop-files";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FiSettings } from "react-icons/fi";
+import { FiHelpCircle } from "react-icons/fi";
+import { MdOutlinePrivacyTip } from "react-icons/md";
+
 const fileTypes = ["JPG", "PNG", "GIF"];
 
 const Profile = () => {
@@ -69,12 +73,94 @@ const Profile = () => {
                     </h2>
                     <div class="w-12 h-1 bg-darkSlateBlue rounded mt-2 mb-4"></div>
                     <p class="text-base"></p>
-                    <button
-                      class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
-                      onClick={() => navigate("/pastOrders")}
-                    >
-                      View Past Orders
-                    </button>
+                    <div className="flex gap-3">
+                      <button
+                        class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                        onClick={() => navigate("/pastOrders")}
+                      >
+                        View Past Orders
+                      </button>
+                      <span
+                        data-popover-target="popover-default"
+                        data-popover-placement="bottom"
+                      >
+                        <FiSettings
+                          style={{ fontSize: "31px", cursor: "pointer" }}
+                        />
+                      </span>
+                      <div
+                        data-popover
+                        id="popover-default"
+                        role="tooltip"
+                        class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
+                      >
+                        <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                          <h3 class="font-semibold text-gray-900 dark:text-white">
+                            Settings
+                          </h3>
+                        </div>
+                        <div class="px-3 py-2">
+                          <p className="my-3">
+                            <label class="relative inline-flex items-center cursor-pointer">
+                              <input
+                                type="checkbox"
+                                value=""
+                                class="sr-only peer"
+                              />
+                              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Turn on/off notifications
+                              </span>
+                            </label>
+                          </p>
+                          <p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                              <input
+                                type="checkbox"
+                                value=""
+                                class="sr-only peer"
+                              />
+                              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Dark Mode
+                              </span>
+                            </label>
+                          </p>
+
+                          <p className="my-3">
+                            <label
+                              class="relative inline-flex items-center cursor-pointer"
+                              onClick={() => navigate("/privacy")}
+                            >
+                              <MdOutlinePrivacyTip
+                                style={{
+                                  fontSize: "28px",
+                                }}
+                              />
+                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Privacy
+                              </span>
+                            </label>
+                          </p>
+                          <p className="my-3">
+                            <label
+                              class="relative inline-flex items-center cursor-pointer"
+                              onClick={() => navigate("/help")}
+                            >
+                              <FiHelpCircle
+                                style={{
+                                  fontSize: "28px",
+                                }}
+                              />
+                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Help
+                              </span>
+                            </label>
+                          </p>
+                        </div>
+                        <div data-popper-arrow></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">

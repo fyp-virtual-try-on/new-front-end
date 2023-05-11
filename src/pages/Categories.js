@@ -11,6 +11,7 @@ import img6 from "./../images/6.jpg";
 import { useDispatch } from "react-redux";
 import { cartItem } from "../store/cartItem/cartItemSlice";
 import { favItem } from "../store/cartItem/favItemSlice";
+import { removeAllItems } from "../store/cartItem/cartItemSlice";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Categories = () => {
     },
     {
       id: 4,
-      name:  "T Shirt",
+      name: "T Shirt",
       image: img4,
       quantity: 1,
       price: 400,
@@ -50,7 +51,7 @@ const Categories = () => {
     },
     {
       id: 5,
-      name:  "T Shirt",
+      name: "T Shirt",
       image: img5,
       quantity: 1,
       price: 400,
@@ -58,7 +59,7 @@ const Categories = () => {
     },
     {
       id: 6,
-      name:  "T Shirt",
+      name: "T Shirt",
       image: img6,
       quantity: 1,
       price: 400,
@@ -191,7 +192,22 @@ const Categories = () => {
                                 </svg>
                               </button>
                             </h2>
-                            <p class="mt-1 mb-5">${item.price}.00</p>
+                            <div className="flex justify-between items-center my-3">
+                              <p class="mt-1 ">${item.price}.00</p>
+                              <p class=" text-gray-500  ">
+                                {" "}
+                                <a
+                                  onClick={() => {
+                                    dispatch(removeAllItems());
+                                    dispatch(cartItem(item));
+                                    navigate("/checkout");
+                                  }}
+                                  className="cursor-pointer"
+                                >
+                                  Buy Now
+                                </a>{" "}
+                              </p>
+                            </div>
                             <div className="flex justify-between">
                               <button
                                 class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"

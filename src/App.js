@@ -16,6 +16,8 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewPassword from "./pages/NewPassword";
 import PastOrders from "./pages/PastOrders";
 import Profile from "./pages/Profile";
+import Privacy from "./pages/Privacy";
+import Help from "./pages/Help";
 import ForgetPassword from "./pages/ForgetPassword";
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="/changePassword" element={<ChangePassword />} />
         <Route path="/dresses" element={<Dresses />} />
         <Route path="/pastOrders" element={<PastOrders />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/help" element={<Help />} />
         <Route path="/favorite" element={<FavoriteList />} />
         <Route path="/productDetailsPage" element={<ProductDetailsPage />} />
 
