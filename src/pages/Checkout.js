@@ -11,6 +11,7 @@ const Checkout = () => {
   const cartItems = useSelector((state) => state.cartItems);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [isCashOnDelivery, setIsCashOnDelivery] = useState("false");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [zip, setZip] = useState("");
@@ -71,7 +72,6 @@ const Checkout = () => {
 
   return (
     <>
-      {console.log("cartItems => ", cartItems)}
       <section class="text-gray-600 body-font relative sm:mt-24 mt-64">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-12">
@@ -155,81 +155,101 @@ const Checkout = () => {
                   ></textarea>
                 </div>
               </div>
-              <div class="p-2 w-full">
-                <div class="relative">
-                  <label for="email" class="leading-7 text-sm text-gray-600">
-                    Card Holder Name
-                  </label>
-                  <input
-                    type="text"
-                    id="email"
-                    name="email"
-                    value={cardHolderName}
-                    onChange={(e) => setCardHolderName(e.target.value)}
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  />
-                </div>
-              </div>
-              <div class="p-2 w-full">
-                <div class="relative">
-                  <label for="email" class="leading-7 text-sm text-gray-600">
-                    Card Number
-                  </label>
-                  <input
-                    type="text"
-                    id="email"
-                    value={cardNumber}
-                    onChange={(e) => setCardNumber(e.target.value)}
-                    name="email"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  />
-                </div>
-              </div>
-              <div class="p-2 w-full">
-                <div class="relative">
-                  <label for="email" class="leading-7 text-sm text-gray-600">
-                    CVV
-                  </label>
-                  <input
-                    type="text"
-                    id="email"
-                    name="cvv"
-                    value={cvv}
-                    onChange={(e) => setCvv(e.target.value)}
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  />
-                </div>
-              </div>
-              <div class="p-2 w-full">
-                <div class="relative">
-                  <label for="email" class="leading-7 text-sm text-gray-600">
-                    Expiry Date
-                  </label>
-                  <input
-                    type="text"
-                    id="email"
-                    name="email"
-                    value={expiryDate}
-                    onChange={(e) => setExpiryDate(e.target.value)}
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  />
-                </div>
-              </div>
+
+              {isCashOnDelivery === "false" && (
+                <>
+                  <div class="p-2 w-full">
+                    <div class="relative">
+                      <label
+                        for="email"
+                        class="leading-7 text-sm text-gray-600"
+                      >
+                        Card Holder Name
+                      </label>
+                      <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        value={cardHolderName}
+                        onChange={(e) => setCardHolderName(e.target.value)}
+                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+                  </div>
+                  <div class="p-2 w-full">
+                    <div class="relative">
+                      <label
+                        for="email"
+                        class="leading-7 text-sm text-gray-600"
+                      >
+                        Card Number
+                      </label>
+                      <input
+                        type="text"
+                        id="email"
+                        value={cardNumber}
+                        onChange={(e) => setCardNumber(e.target.value)}
+                        name="email"
+                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+                  </div>
+                  <div class="p-2 w-full">
+                    <div class="relative">
+                      <label
+                        for="email"
+                        class="leading-7 text-sm text-gray-600"
+                      >
+                        CVV
+                      </label>
+                      <input
+                        type="text"
+                        id="email"
+                        name="cvv"
+                        value={cvv}
+                        onChange={(e) => setCvv(e.target.value)}
+                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+                  </div>
+                  <div class="p-2 w-full">
+                    <div class="relative">
+                      <label
+                        for="email"
+                        class="leading-7 text-sm text-gray-600"
+                      >
+                        Expiry Date
+                      </label>
+                      <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        value={expiryDate}
+                        onChange={(e) => setExpiryDate(e.target.value)}
+                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
 
               <fieldset>
                 <legend class="sr-only">Countries</legend>
                 <header className="p-3 font-bold text-lg">
                   Payment Method
                 </header>
+                {console.log("isCashOnDelivery", isCashOnDelivery)}
 
                 <div class="flex items-center mb-4">
                   <input
                     id="country-option-1"
                     type="radio"
                     name="countries"
-                    value="USA"
+                    onChange={(e) => {
+                      setIsCashOnDelivery("true");
+                    }}
+                    value={isCashOnDelivery}
                     class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
-                    checked
                   />
                   <label
                     for="country-option-1"
@@ -244,7 +264,11 @@ const Checkout = () => {
                     id="country-option-2"
                     type="radio"
                     name="countries"
-                    value="Germany"
+                    onChange={(e) => {
+                      setIsCashOnDelivery("false");
+                    }}
+                    value={isCashOnDelivery}
+                    // checked
                     class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
                   />
                   <label
@@ -264,7 +288,11 @@ const Checkout = () => {
                     id="country-option-3"
                     type="radio"
                     name="countries"
-                    value="Spain"
+                    onChange={(e) => {
+                      setIsCashOnDelivery("false");
+                    }}
+                    value={isCashOnDelivery}
+                    // value={}
                     class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600"
                   />
                   <label
