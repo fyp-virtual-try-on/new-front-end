@@ -15,6 +15,9 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
   const [file, setFile] = useState(null);
   const [uploadImageURL, setUploadImageURL] = useState("");
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
   const [isSettings, setIsSettings] = useState(false);
   const [email, setEmail] = useState("");
 
@@ -43,10 +46,38 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
         console.log(res);
         setEmail(res.data.email);
         setName(res.data.name);
+        setPhone(res.data.phone);
+        setAddress(res.data.address);
+        setCity(res.data.city);
         setId(res.data._id);
       })
       .catch((err) => {
         console.log(err.response.data.msg);
+      });
+  };
+  const updateData = async () => {
+    console.log(name, email, phone, address, city);
+    await axios
+      .put(
+        `http://localhost:5000/api/users/users/${localStorage.getItem(
+          "userId"
+        )}`,
+        {
+          name: name,
+          email: email,
+          phone: phone,
+          address: address,
+          city: city,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        alert("Details Updated Successfully");
+        setIsEditDetails(false);
+      })
+      .catch((err) => {
+        console.log(err.response.data.msg);
+        alert("Something went wrong");
       });
   };
 
@@ -215,15 +246,15 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
                   </p>
                   <p class="leading-relaxed text-lg mb-4">
                     {" "}
-                    <span className="font-bold">Phone :</span> 55869955845{" "}
+                    <span className="font-bold">Phone :</span> {phone}{" "}
                   </p>
                   <p class="leading-relaxed text-lg mb-4">
                     {" "}
-                    <span className="font-bold">Address :</span> E9 Islamabad{" "}
+                    <span className="font-bold">Address :</span> {address}{" "}
                   </p>
                   <p class="leading-relaxed text-lg mb-4">
                     {" "}
-                    <span className="font-bold">City :</span> Islamabad{" "}
+                    <span className="font-bold">City :</span> {city}{" "}
                   </p>
                   <button
                     class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
@@ -270,6 +301,8 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
                     <input
                       type="text"
                       id="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       name="name"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -283,6 +316,8 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
                     <input
                       type="email"
                       id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       name="email"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -296,6 +331,8 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
                     <input
                       type="text"
                       id="name"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                       name="name"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -309,6 +346,8 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
                     <input
                       type="email"
                       id="email"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
                       name="email"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
@@ -325,6 +364,8 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
                     <textarea
                       id="message"
                       name="message"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     ></textarea>
                   </div>
@@ -332,7 +373,9 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
                 <div class="p-2 w-full">
                   <button
                     class="flex mx-auto text-white bg-darkSlateBlue border-2 py-2 px-8 focus:outline-none hover:bg-white hover:text-black rounded text-lg"
-                    onClick={() => setIsEditDetails(false)}
+                    onClick={() => {
+                      updateData();
+                    }}
                   >
                     Save
                   </button>

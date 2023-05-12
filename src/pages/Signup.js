@@ -3,6 +3,9 @@ import axios from "axios";
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
@@ -16,6 +19,9 @@ const Signup = () => {
         .post("http://localhost:5000/api/users/signup", {
           name: fullName,
           email: email,
+          phone: phone,
+          address: address,
+          city: city,
           password: password,
         })
         .then((res) => {
@@ -23,6 +29,9 @@ const Signup = () => {
           setFullName("");
           setEmail("");
           setPassword("");
+          setEmail("");
+          setPhone("");
+          setAddress("");
           setIsError(false);
           setMsg("Account created successfully!");
           setIsSuccess(true);
@@ -86,6 +95,45 @@ const Signup = () => {
                 id="full-name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
+                name="fullName"
+                class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div class="relative mb-4">
+              <label for="email" class="leading-7 text-sm text-gray-600">
+                Phone
+              </label>
+              <input
+                type="text"
+                id="full-name"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                name="fullName"
+                class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div class="relative mb-4">
+              <label for="email" class="leading-7 text-sm text-gray-600">
+                Address
+              </label>
+              <input
+                type="text"
+                id="full-name"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                name="fullName"
+                class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div class="relative mb-4">
+              <label for="email" class="leading-7 text-sm text-gray-600">
+                City
+              </label>
+              <input
+                type="text"
+                id="full-name"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
                 name="fullName"
                 class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
