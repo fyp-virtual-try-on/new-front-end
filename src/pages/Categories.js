@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import img1 from "./../images/1.jpg";
 import img2 from "./../images/2.jpg";
@@ -35,6 +35,56 @@ const Categories = () => {
   const [isTshirts, setIsTshirts] = useState(true);
   const [isKurti, setIsKurti] = useState(false);
   const [isFroks, setIsFroks] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchedTshirt, setSearchedTshirt] = useState(null);
+  const [searchedKurti, setSearchedKurti] = useState(null);
+  const [searchedFrock, setSearchedFrock] = useState(null);
+
+  useEffect(() => {
+    if (searchQuery.length === 0) {
+      setSearchedFrock(null);
+      setSearchedKurti(null);
+      setSearchedTshirt(null);
+    }
+  }, [searchQuery]);
+  const handleSearch = () => {
+    // setSearchQuery(query);
+
+    if (isTshirts) {
+      const filteredResults = tshirts.filter((item) => {
+        const { name } = item;
+        const lowerCaseQuery = searchQuery.toLowerCase();
+
+        return name.toLowerCase().includes(lowerCaseQuery);
+      });
+
+      setSearchedTshirt(filteredResults);
+
+      console.log("filteredResults", filteredResults);
+    } else if (isKurti) {
+      const filteredResults = kurti.filter((item) => {
+        const { name } = item;
+        const lowerCaseQuery = searchQuery.toLowerCase();
+
+        return name.toLowerCase().includes(lowerCaseQuery);
+      });
+      setSearchedKurti(filteredResults);
+
+      console.log("filteredResults", filteredResults);
+    } else if (isFroks) {
+      const filteredResults = froks.filter((item) => {
+        const { name } = item;
+        const lowerCaseQuery = searchQuery.toLowerCase();
+
+        return name.toLowerCase().includes(lowerCaseQuery);
+      });
+
+      setSearchedFrock(filteredResults);
+      console.log("filteredResults", filteredResults);
+    }
+
+    // setSearchResults(filteredResults);
+  };
 
   const tshirts = [
     {
@@ -288,11 +338,15 @@ const Categories = () => {
           </div>
         </aside>
 
-        <div class=" ">
+        <div
+          style={{
+            width: "100%",
+          }}
+        >
           <div class="p-2 ">
             <section class="text-gray-600 body-font">
               <div class="container px-5  mx-auto">
-                <form className="mt-5 mb-20">
+                <div className="mt-5 mb-20">
                   <label
                     for="default-search"
                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -320,24 +374,26 @@ const Categories = () => {
                     <input
                       type="search"
                       id="default-search"
+                      onChange={(e) => setSearchQuery(e.target.value)}
                       class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search Catogories..."
                       required
                     />
                     <button
-                      type="submit"
+                      onClick={() => handleSearch(searchQuery)}
                       class="text-white absolute right-2.5 bottom-2.5 bg-darkSlateBlue hover:bg-white hover:text-black border-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                       Search
                     </button>
                   </div>
-                </form>
+                </div>
 
                 <div
                   class="flex flex-wrap -m-4  justify-center"
                   style={{ gap: "33px" }}
                 >
                   {isTshirts &&
+                    !searchedTshirt &&
                     tshirts.map((item) => {
                       return (
                         <>
@@ -412,7 +468,84 @@ const Categories = () => {
                         </>
                       );
                     })}
+                  {isTshirts &&
+                    searchedTshirt &&
+                    searchedTshirt.map((item) => {
+                      return (
+                        <>
+                          <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
+                            <a class="block relative h-auto rounded overflow-hidden img">
+                              <img
+                                alt="ecommerce"
+                                class="object-cover object-center w-full h-full block "
+                                src={item.image}
+                              />
+                            </a>
+                            <div class="mt-4">
+                              <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                                CATEGORY
+                              </h3>
+                              <h2 class="text-gray-900 flex justify-between title-font text-lg font-medium">
+                                <span>{item.name}</span>{" "}
+                                <button
+                                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                                  onClick={() => dispatch(favItem(item))}
+                                >
+                                  <svg
+                                    fill="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    class="w-5 h-5"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                  </svg>
+                                </button>
+                              </h2>
+                              <div className="flex justify-between items-center my-3">
+                                <p class="mt-1 ">${item.price}.00</p>
+                                <p class=" text-gray-500  ">
+                                  {" "}
+                                  <a
+                                    onClick={() => {
+                                      dispatch(removeAllItems());
+                                      dispatch(cartItem(item));
+                                      navigate("/checkout");
+                                    }}
+                                    className="cursor-pointer"
+                                  >
+                                    Buy Now
+                                  </a>{" "}
+                                </p>
+                              </div>
+                              <div className="flex justify-between">
+                                <button
+                                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"
+                                  onClick={() => dispatch(cartItem(item))}
+                                >
+                                  Add to Cart
+                                </button>
+                                <button
+                                  class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded "
+                                  onClick={() =>
+                                    navigate(
+                                      `/productDetailsPage?item=${JSON.stringify(
+                                        item
+                                      )}`
+                                    )
+                                  }
+                                >
+                                  Try
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
                   {isKurti &&
+                    !searchedKurti &&
                     kurti.map((item) => {
                       return (
                         <>
@@ -487,8 +620,165 @@ const Categories = () => {
                         </>
                       );
                     })}
+                  {isKurti &&
+                    searchedKurti &&
+                    searchedKurti.map((item) => {
+                      return (
+                        <>
+                          <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
+                            <a class="block relative h-auto rounded overflow-hidden img">
+                              <img
+                                alt="ecommerce"
+                                class="object-cover object-center w-full h-full block"
+                                src={item.image}
+                              />
+                            </a>
+                            <div class="mt-4">
+                              <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                                CATEGORY
+                              </h3>
+                              <h2 class="text-gray-900 flex justify-between title-font text-lg font-medium">
+                                <span>{item.name}</span>{" "}
+                                <button
+                                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                                  onClick={() => dispatch(favItem(item))}
+                                >
+                                  <svg
+                                    fill="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    class="w-5 h-5"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                  </svg>
+                                </button>
+                              </h2>
+                              <div className="flex justify-between items-center my-3">
+                                <p class="mt-1 ">${item.price}.00</p>
+                                <p class=" text-gray-500  ">
+                                  {" "}
+                                  <a
+                                    onClick={() => {
+                                      dispatch(removeAllItems());
+                                      dispatch(cartItem(item));
+                                      navigate("/checkout");
+                                    }}
+                                    className="cursor-pointer"
+                                  >
+                                    Buy Now
+                                  </a>{" "}
+                                </p>
+                              </div>
+                              <div className="flex justify-between">
+                                <button
+                                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"
+                                  onClick={() => dispatch(cartItem(item))}
+                                >
+                                  Add to Cart
+                                </button>
+                                <button
+                                  class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded "
+                                  onClick={() =>
+                                    navigate(
+                                      `/productDetailsPage?item=${JSON.stringify(
+                                        item
+                                      )}`
+                                    )
+                                  }
+                                >
+                                  Try
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
                   {isFroks &&
+                    !searchedFrock &&
                     froks.map((item) => {
+                      return (
+                        <>
+                          <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
+                            <a class="block relative h-auto rounded overflow-hidden img">
+                              <img
+                                alt="ecommerce"
+                                class=" w-full block"
+                                src={item.image}
+                                style={{
+                                  height: "300px",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            </a>
+                            <div class="mt-4">
+                              <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+                                CATEGORY
+                              </h3>
+                              <h2 class="text-gray-900 flex justify-between title-font text-lg font-medium">
+                                <span>{item.name}</span>{" "}
+                                <button
+                                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                                  onClick={() => dispatch(favItem(item))}
+                                >
+                                  <svg
+                                    fill="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    class="w-5 h-5"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                  </svg>
+                                </button>
+                              </h2>
+                              <div className="flex justify-between items-center my-3">
+                                <p class="mt-1 ">${item.price}.00</p>
+                                <p class=" text-gray-500  ">
+                                  {" "}
+                                  <a
+                                    onClick={() => {
+                                      dispatch(removeAllItems());
+                                      dispatch(cartItem(item));
+                                      navigate("/checkout");
+                                    }}
+                                    className="cursor-pointer"
+                                  >
+                                    Buy Now
+                                  </a>{" "}
+                                </p>
+                              </div>
+                              <div className="flex justify-between">
+                                <button
+                                  class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded"
+                                  onClick={() => dispatch(cartItem(item))}
+                                >
+                                  Add to Cart
+                                </button>
+                                <button
+                                  class="lg:mt-2  xl:mt-0 flex-shrink-0 inline-flex text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black rounded "
+                                  onClick={() =>
+                                    navigate(
+                                      `/productDetailsPage?item=${JSON.stringify(
+                                        item
+                                      )}`
+                                    )
+                                  }
+                                >
+                                  Try
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  {isFroks &&
+                    searchedFrock &&
+                    searchedFrock.map((item) => {
                       return (
                         <>
                           <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
