@@ -4,6 +4,7 @@ import useDrivePicker from "react-google-drive-picker";
 import Webcam from "react-webcam";
 import { useDispatch } from "react-redux";
 import { favItem } from "../store/cartItem/favItemSlice";
+import axios from "axios";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -26,6 +27,8 @@ const ProductDetailsPage = () => {
 
   const [picture, setPicture] = useState("");
   const webcamRef = React.useRef(null);
+  const [fullName, setFullName] = useState("");
+  const [message, setMessage] = useState("");
   const capture = React.useCallback(() => {
     const pictureSrc = webcamRef.current.getScreenshot();
     setPicture(pictureSrc);
@@ -37,6 +40,25 @@ const ProductDetailsPage = () => {
     reader.onload = () => {
       setUploadImageURL(reader.result);
     };
+  };
+
+  const sendData = async () => {
+    await axios
+      .post("http://localhost:5000/api/users/review", {
+        username: fullName,
+        email: email,
+        comment: message,
+      })
+      .then((res) => {
+        console.log(res);
+        alert("Form submitted successfully!");
+        setFullName("");
+        setEmail("");
+        setMessage("");
+      })
+      .catch((err) => {
+        alert("Error submitting form!");
+      });
   };
 
   useEffect(() => {
@@ -67,17 +89,17 @@ const ProductDetailsPage = () => {
     });
   };
 
-  const addNewReview = (e) => {
-    const newReview = {
-      name,
-      date: new Date().toLocaleDateString(),
-      review,
-    };
-    reviews.push(newReview);
-    setName("");
-    setEmail("");
-    setReview("");
-  };
+  // const addNewReview = (e) => {
+  //   const newReview = {
+  //     name,
+  //     date: new Date().toLocaleDateString(),
+  //     review,
+  //   };
+  //   reviews.push(newReview);
+  //   setName("");
+  //   setEmail("");
+  //   setReview("");
+  // };
 
   const reviews = [
     {
@@ -540,8 +562,8 @@ const ProductDetailsPage = () => {
                   <input
                     type="text"
                     id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
                     name="name"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -570,17 +592,16 @@ const ProductDetailsPage = () => {
                   <textarea
                     id="message"
                     name="message"
-                    value={review}
-                    onChange={(e) => setReview(e.target.value)}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-darkSlateBlue focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                   ></textarea>
                 </div>
               </div>
-              {console.log("review", reviews)}
               <div class="p-2 w-full">
                 <button
                   class="flex mx-auto text-white bg-darkSlateBlue border-2 py-2 px-8 focus:outline-none hover:bg-white hover:text-black rounded text-lg"
-                  onClick={(e) => addNewReview(e)}
+                  onClick={(e) => sendData()}
                 >
                   Comment
                 </button>
