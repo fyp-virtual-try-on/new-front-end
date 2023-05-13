@@ -13,7 +13,7 @@ import kImg4 from "./../images/kurties/4.jpg";
 import kImg5 from "./../images/kurties/5.jpg";
 import kImg6 from "./../images/kurties/6.jpg";
 import kImg7 from "./../images/kurties/7.jpg";
-
+import "./Categories.css";
 import fImg1 from "./../images/froks/1.jpg";
 import fImg2 from "./../images/froks/2.jpg";
 import fImg3 from "./../images/froks/3.jpg";
@@ -342,10 +342,10 @@ const Categories = () => {
                       return (
                         <>
                           <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
-                            <a class="block relative h-auto rounded overflow-hidden">
+                            <a class="block relative h-auto rounded overflow-hidden img">
                               <img
                                 alt="ecommerce"
-                                class="object-cover object-center w-full h-full block"
+                                class="object-cover object-center w-full h-full block "
                                 src={item.image}
                               />
                             </a>
@@ -417,7 +417,7 @@ const Categories = () => {
                       return (
                         <>
                           <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
-                            <a class="block relative h-auto rounded overflow-hidden">
+                            <a class="block relative h-auto rounded overflow-hidden img">
                               <img
                                 alt="ecommerce"
                                 class="object-cover object-center w-full h-full block"
@@ -492,7 +492,7 @@ const Categories = () => {
                       return (
                         <>
                           <div class="lg:w-1/4 md:w-1/2 p-4 w-full shadow-md">
-                            <a class="block relative h-auto rounded overflow-hidden">
+                            <a class="block relative h-auto rounded overflow-hidden img">
                               <img
                                 alt="ecommerce"
                                 class=" w-full block"
