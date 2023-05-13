@@ -39,7 +39,7 @@ const Categories = () => {
   const tshirts = [
     {
       id: 1,
-      name: "T-Shirt",
+      name: "Craptop",
       image: img1,
       quantity: 1,
       price: 100,
@@ -71,7 +71,7 @@ const Categories = () => {
     },
     {
       id: 5,
-      name: "T Shirt",
+      name: "Net Green Top",
       image: img5,
       quantity: 1,
       price: 400,
@@ -79,7 +79,7 @@ const Categories = () => {
     },
     {
       id: 6,
-      name: "T Shirt",
+      name: "Pink Top",
       image: img6,
       quantity: 1,
       price: 400,
@@ -89,7 +89,7 @@ const Categories = () => {
   const kurti = [
     {
       id: 1,
-      name: "Kurti",
+      name: " Long Kurti",
       image: kImg1,
       quantity: 1,
       price: 100,
@@ -97,7 +97,7 @@ const Categories = () => {
     },
     {
       id: 2,
-      name: "Kurti",
+      name: " Short Kurti",
       image: kImg2,
       quantity: 1,
       price: 200,
@@ -105,7 +105,7 @@ const Categories = () => {
     },
     {
       id: 3,
-      name: "Kurti",
+      name: "Short Kurti",
       image: kImg3,
       quantity: 1,
       price: 300,
@@ -113,7 +113,7 @@ const Categories = () => {
     },
     {
       id: 4,
-      name: "Kurti",
+      name: "Long Kurti",
       image: kImg4,
       quantity: 1,
       price: 400,
@@ -121,7 +121,7 @@ const Categories = () => {
     },
     {
       id: 5,
-      name: "Kurti",
+      name: "Kurti Top",
       image: kImg5,
       quantity: 1,
       price: 400,
@@ -129,7 +129,7 @@ const Categories = () => {
     },
     {
       id: 6,
-      name: "Kurti",
+      name: "Kurti Top",
       image: kImg6,
       quantity: 1,
       price: 400,
@@ -137,7 +137,7 @@ const Categories = () => {
     },
     {
       id: 7,
-      name: "Kurti",
+      name: " White Kurti",
       image: kImg7,
       quantity: 1,
       price: 400,
@@ -147,7 +147,7 @@ const Categories = () => {
   const froks = [
     {
       id: 1,
-      name: "Frok",
+      name: "Long Frok",
       image: fImg1,
       quantity: 1,
       price: 100,
@@ -155,7 +155,7 @@ const Categories = () => {
     },
     {
       id: 2,
-      name: "Frok",
+      name: "Short Frok",
       image: fImg2,
       quantity: 1,
       price: 200,
@@ -163,7 +163,7 @@ const Categories = () => {
     },
     {
       id: 3,
-      name: "Frok",
+      name: "Long Frok",
       image: fImg3,
       quantity: 1,
       price: 300,
@@ -171,7 +171,7 @@ const Categories = () => {
     },
     {
       id: 4,
-      name: "Frok",
+      name: " Short Frok",
       image: fImg4,
       quantity: 1,
       price: 400,
@@ -203,7 +203,7 @@ const Categories = () => {
     },
     {
       id: 8,
-      name: "Frok",
+      name: "Long Frok",
       image: fImg8,
       quantity: 1,
       price: 400,
@@ -211,7 +211,7 @@ const Categories = () => {
     },
     {
       id: 9,
-      name: "Frok",
+      name: "Long Frok",
       image: fImg9,
       quantity: 1,
       price: 400,
