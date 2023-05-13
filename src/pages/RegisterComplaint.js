@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ContactUs = () => {
+const RegisterComplaint = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const sendData = async () => {
     await axios
-      .post("http://localhost:5000/api/users/contact", {
+      .post("http://localhost:5000/api/users/register-complaint", {
         name: fullName,
         email: email,
-        message: message,
+        complaint: message,
       })
       .then((res) => {
         console.log(res);
@@ -30,10 +30,10 @@ const ContactUs = () => {
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-12">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-              Contact Us
+              Complaint
             </h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Contact us if you experience any issues with our virtual try-on
+              Complaint if you experience any issues with our virtual try-on
               service. Our team is here to assist you.
             </p>
           </div>
@@ -72,7 +72,7 @@ const ContactUs = () => {
               <div class="p-2 w-full">
                 <div class="relative">
                   <label for="message" class="leading-7 text-sm text-gray-600">
-                    Message
+                    Your Complaint
                   </label>
                   <textarea
                     id="message"
@@ -107,4 +107,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default RegisterComplaint;

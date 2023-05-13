@@ -127,10 +127,16 @@ const Profile = ({ isDarkMode, setIsDarkMode }) => {
                     <div class="w-12 h-1 bg-darkSlateBlue rounded mt-2 mb-4"></div>
                     <p class="text-base"></p>
                     <button
-                      class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                      class="inline-flex items-center bg-gray-100 mb-4 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
                       onClick={() => navigate("/pastOrders")}
                     >
                       View Past Orders
+                    </button>
+                    <button
+                      class="inline-flex items-center  bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                      onClick={() => navigate("/registerComplaint")}
+                    >
+                      Register Complaint
                     </button>
 
                     <div className="flex gap-3 flex-col">
