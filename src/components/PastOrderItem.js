@@ -33,28 +33,33 @@ export default function PastOrderItem({ order }) {
         <h5 class="mb-2 text-2sm font-bold tracking-tight text-gray-900 dark:text-white">
           Order ID: {order?._id}
         </h5>
-        <p class=" font-bold flex items-center text-gray-700 dark:text-gray-400">
-          Products:
-        </p>
-        {order?.products.map((product, index) => (
-          <div>
-            <p class="  flex items-center text-gray-700 dark:text-gray-400">
-              SNo. {index + 1}
+        <details>
+          <summary>Order Details</summary>
+          <p>
+            <p class=" font-bold flex items-center text-gray-700 dark:text-gray-400">
+              Products:
             </p>
-            <p class="  flex items-center text-gray-700 dark:text-gray-400">
-              product name: {product.name}
-            </p>
-            <p class="  flex items-center text-gray-700 dark:text-gray-400">
-              product Quantity: {product.quantity}
-            </p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Price : {product.totalPrice}$
-            </p>
-          </div>
-        ))}
+            {order?.products.map((product, index) => (
+              <div>
+                <p class="  flex items-center text-gray-700 dark:text-gray-400">
+                  SNo. {index + 1}
+                </p>
+                <p class="  flex items-center text-gray-700 dark:text-gray-400">
+                  product name: {product.name}
+                </p>
+                <p class="  flex items-center text-gray-700 dark:text-gray-400">
+                  product Quantity: {product.quantity}
+                </p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  Price : {product.totalPrice}$
+                </p>
+              </div>
+            ))}
+          </p>
+        </details>
 
         <button
-          class="lg:mt-2 xl:mt-0   text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black  rounded"
+          class=" mt-4  text-white bg-darkSlateBlue border-2 py-2 px-6 focus:outline-none hover:bg-white hover:text-black  rounded"
           onClick={() => sendData(order)}
         >
           Re-Order
