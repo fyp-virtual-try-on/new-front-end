@@ -5,8 +5,8 @@ import { HiShoppingCart } from "react-icons/hi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import logo from "../images/logoNew.png";
-import { ReactComponent as Logo } from "../images/b_logo.svg";
+import logo from "../images/tryon-logo.jpg";
+// import { ReactComponent as Logo } from "../images/b_logo.svg";
 import Drawer from "./Drawer";
 import Card from "./Card";
 
@@ -24,7 +24,15 @@ const Navbar = () => {
             onClick={() => navigate("/")}
             class="flex title-font font-medium items-center cursor-pointer text-gray-900 mb-4 md:mb-0"
           >
-            <svg
+            <img
+              src={logo}
+              alt=""
+              srcset=""
+              style={{
+                width: "14%",
+              }}
+            />
+            {/* <svg
               width="441"
               height="83"
               viewBox="0 0 441 83"
@@ -63,7 +71,7 @@ const Navbar = () => {
                 stroke="#007DB9"
                 stroke-width="6"
               />
-            </svg>
+            </svg> */}
           </a>
           <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
             <a class="mr-5 hover:text-gray-900">
