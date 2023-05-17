@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const ChangePassword = () => {
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const UpdatePassword = async () => {
+    if (newPassword === confirmNewPassword) {
+      await axios
+        .put(
+          `http://localhost:5000/api/users/users/${localStorage.getItem(
+            "userId"
+          )}/password`,
+          {
+            currentPassword: currentPassword,
+            newPassword: newPassword,
+          }
+        )
+        .then((res) => {
+          alert("Password Updated Successfully");
+          setCurrentPassword("");
+          setNewPassword("");
+          setConfirmNewPassword("");
+        })
+        .catch((err) => {
+          alert("Your current password is incorrect");
+        });
+    } else {
+      alert("New Password and Confirm New Password does not match");
+    }
+  };
   return (
     <>
       <section
@@ -27,11 +56,13 @@ const ChangePassword = () => {
 
             <div class="relative mb-4">
               <label for="email" class="leading-7 text-sm text-gray-600">
-                Old Password
+                Current Password
               </label>
               <input
                 type="password"
                 id="password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
                 name="password"
                 class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
@@ -44,6 +75,8 @@ const ChangePassword = () => {
               <input
                 type="password"
                 id="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
                 name="password"
                 class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
@@ -55,12 +88,17 @@ const ChangePassword = () => {
               <input
                 type="password"
                 id="cpassword"
+                value={confirmNewPassword}
+                onChange={(e) => setConfirmNewPassword(e.target.value)}
                 name="cpassword"
                 class="w-full bg-white rounded border border-gray-300 focus:border-darkSlateBlue focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
 
-            <button class="text-white bg-darkSlateBlue border-2 py-2 px-8 focus:outline-none hover:bg-white hover:text-black rounded text-lg">
+            <button
+              class="text-white bg-darkSlateBlue border-2 py-2 px-8 focus:outline-none hover:bg-white hover:text-black rounded text-lg"
+              onClick={() => UpdatePassword()}
+            >
               Save
             </button>
             <p class="text-xs text-gray-500 mt-3">
